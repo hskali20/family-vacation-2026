@@ -81,13 +81,23 @@ nav a:hover,nav a.active{background:rgba(255,255,255,.12);color:var(--white);}
 .nok{color:var(--coral);font-size:11px;font-weight:600;white-space:nowrap;}
 
 /* WEATHER */
-.wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
-.wcard{background:var(--white);border-radius:10px;padding:14px;text-align:center;box-shadow:0 1px 6px rgba(27,42,74,.06);}
-.wloc{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
-.wtemp{font-size:26px;font-weight:700;color:var(--navy);line-height:1;}
+.wblock{margin-bottom:16px;}
+.wblock:last-child{margin-bottom:0;}
+.wloc-title{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);margin-bottom:7px;}
+.wdays{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.wcard{background:var(--white);border-radius:10px;padding:12px 8px;text-align:center;box-shadow:0 1px 6px rgba(27,42,74,.06);}
+.wcard.wloading{color:var(--muted);font-size:11px;padding:20px 8px;}
+.wd-date{font-size:10px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:5px;}
 .wicon{font-size:22px;margin-bottom:3px;}
-.wdesc{font-size:11px;color:var(--muted);margin-top:3px;}
-.wsea{font-size:11px;color:var(--lav);font-weight:500;margin-top:2px;}
+.wtemp{font-size:18px;font-weight:700;color:var(--navy);line-height:1;}
+.wtemp small{font-size:12px;font-weight:500;color:var(--muted);}
+.wnote{font-size:11px;color:var(--muted);margin-top:8px;}
+
+/* LINK CHIPS */
+.linkrow{display:flex;flex-wrap:wrap;gap:7px;margin-top:8px;}
+.lnk{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--navy);background:var(--linen);border:1px solid var(--border);border-radius:14px;padding:4px 11px;text-decoration:none;}
+.lnk:hover{background:var(--border);}
+.lnk-todo{color:var(--coral);border-color:var(--coral);background:#fff;}
 
 /* ATTRACTIONS */
 .attr{padding:13px 0;border-bottom:1px solid var(--border);}
@@ -139,6 +149,7 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
 <nav>
   <a onclick="show('villa')" id="nav-villa" class="active">La Villa</a>
   <a onclick="show('programme')" id="nav-programme">Programme</a>
+  <a onclick="show('velo')" id="nav-velo">V&eacute;lo</a>
   <a onclick="show('vols')" id="nav-vols">Vols</a>
   <a onclick="show('sicile')" id="nav-sicile">Sicile</a>
   <a onclick="show('tunisie')" id="nav-tunisie">Tunisie</a>
@@ -181,51 +192,43 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
         <span class="am">&#128293; BBQ</span>
         <span class="am">&#128663; 3 parkings</span>
       </div>
-    </div>
-  </div>
-
-  <div class="sdiv"></div>
-  <p class="slabel">V&eacute;lo &mdash; La Ciotat</p>
-  <div class="card">
-    <div class="chd navy">
-      <h3>Giant City La Ciotat</h3>
-      <p>Giant TCR Advanced 0 Di2 2025 &middot; 21&ndash;25 juillet &middot; 5 jours</p>
-    </div>
-    <div class="cbd">
-      <a class="map-btn navy" href="https://maps.google.com/?q=232+Avenue+Ernest+Subilia+La+Ciotat" target="_blank">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        232 Av. Ernest Subilia &mdash; &agrave; 1,5 km de la villa
-      </a>
-      <div class="frow">
-        <div class="fdate">21&ndash;25 Jul</div>
-        <div class="finfo">
-          <div class="froute">Giant TCR Advanced 0 Di2 2025 &mdash; Taille M</div>
-          <div class="fdetail">P&eacute;dales SPD &middot; Casque inclus &middot; Chaussures SPD apport&eacute;es</div>
-          <div class="fdetail">Maelys &mdash; giantcitylaciotat@gmail.com &middot; R&eacute;ouverture mercredi</div>
-          <div class="fdetail">5 parcours Komoot fournis (Route des Cr&ecirc;tes, Col de l&rsquo;Espigoulier, Calanques...)</div>
-        </div>
-        <div class="ok">&#10003; Confirm&eacute;</div>
+      <div class="linkrow">
+        <a class="lnk" href="https://www.airbnb.com/rooms/46958162" target="_blank">&#127968; Annonce Airbnb</a>
+        <a class="lnk" href="https://www.google.com/maps/search/restaurants+La+Ciotat+port" target="_blank">&#127860; Restaurants &agrave; La Ciotat</a>
+        <a class="lnk" href="https://www.google.com/maps/search/pharmacie+La+Ciotat" target="_blank">&#128138; Pharmacies</a>
       </div>
     </div>
   </div>
 
   <div class="sdiv"></div>
-  <p class="slabel">M&eacute;t&eacute;o pr&eacute;vue &mdash; juillet</p>
-  <div class="wgrid">
-    <div class="wcard"><div class="wloc">La Ciotat</div><div class="wicon">&#9728;</div><div class="wtemp">30&deg;</div><div class="wdesc">Ensoleill&eacute;</div><div class="wsea">Mer ~25&deg;C</div></div>
-    <div class="wcard"><div class="wloc">Sicile</div><div class="wicon">&#9728;</div><div class="wtemp">32&deg;</div><div class="wdesc">Tr&egrave;s chaud</div><div class="wsea">Mer ~26&deg;C</div></div>
-    <div class="wcard"><div class="wloc">Hammamet</div><div class="wicon">&#9728;</div><div class="wtemp">34&deg;</div><div class="wdesc">Chaud &amp; sec</div><div class="wsea">Mer ~27&deg;C</div></div>
+  <p class="slabel">M&eacute;t&eacute;o &mdash; pr&eacute;visions 3 jours</p>
+  <div class="card">
+    <div class="cbd">
+      <div class="wblock">
+        <div class="wloc-title">La Ciotat</div>
+        <div class="wdays" id="w-laciotat"><div class="wcard wloading">Chargement&hellip;</div></div>
+      </div>
+      <div class="wblock">
+        <div class="wloc-title">Sicile (Palerme)</div>
+        <div class="wdays" id="w-sicile"><div class="wcard wloading">Chargement&hellip;</div></div>
+      </div>
+      <div class="wblock">
+        <div class="wloc-title">Hammamet</div>
+        <div class="wdays" id="w-hammamet"><div class="wcard wloading">Chargement&hellip;</div></div>
+      </div>
+      <div class="wnote">Pr&eacute;visions en direct (Open-Meteo) &mdash; se met &agrave; jour &agrave; chaque ouverture de la page.</div>
+    </div>
   </div>
 
   <div class="sdiv"></div>
   <p class="slabel">Activit&eacute;s &amp; visites</p>
   <div class="card">
     <div class="cbd">
-      <div class="attr"><span class="tag tag-beach">Plage</span><div class="attr-name">Plages des Lecques &amp; La Madrague</div><div class="attr-desc">Les plus belles plages de sable, 5&ndash;10 min en voiture. Eau cristalline, id&eacute;al pour les enfants.</div></div>
-      <div class="attr"><span class="tag tag-nature">Nature</span><div class="attr-name">Calanques de La Ciotat</div><div class="attr-desc">Criques sauvages &agrave; 800m &agrave; pied. Figuerolles et Cap de l&rsquo;Aigle incontournables. Randonn&eacute;e ou bateau.</div></div>
-      <div class="attr"><span class="tag tag-culture">Culture</span><div class="attr-name">Vieux-port &amp; Eden Cin&eacute;ma</div><div class="attr-desc">La Ciotat est le berceau du cin&eacute;ma (fr&egrave;res Lumi&egrave;re). L&rsquo;Eden est le plus vieux cin&eacute;ma du monde encore en activit&eacute;.</div></div>
-      <div class="attr"><span class="tag tag-nature">Excursion</span><div class="attr-name">Cassis &amp; ses calanques</div><div class="attr-desc">20 km. Bateau ou kayak pour explorer Port-Miou, Port-Pin et En-Vau. Parmi les plus belles c&ocirc;tes de France.</div></div>
-      <div class="attr"><span class="tag tag-culture">Excursion</span><div class="attr-name">Aix-en-Provence</div><div class="attr-desc">40 km. March&eacute; proven&ccedil;al, cours Mirabeau, atelier C&eacute;zanne. Demi-journ&eacute;e suffisante.</div></div>
+      <div class="attr"><span class="tag tag-beach">Plage</span><div class="attr-name">Plages des Lecques &amp; La Madrague</div><div class="attr-desc">Les plus belles plages de sable, 5&ndash;10 min en voiture. Eau cristalline, id&eacute;al pour les enfants.</div><div class="linkrow"><a class="lnk" href="https://www.google.com/maps/search/Plage+des+Lecques" target="_blank">&#128205; Maps</a></div></div>
+      <div class="attr"><span class="tag tag-nature">Nature</span><div class="attr-name">Calanques de La Ciotat</div><div class="attr-desc">Criques sauvages &agrave; 800m &agrave; pied. Figuerolles et Cap de l&rsquo;Aigle incontournables. Randonn&eacute;e ou bateau.</div><div class="linkrow"><a class="lnk" href="https://www.google.com/maps/search/Calanque+de+Figuerolles" target="_blank">&#128205; Maps</a></div></div>
+      <div class="attr"><span class="tag tag-culture">Culture</span><div class="attr-name">Vieux-port &amp; Eden Cin&eacute;ma</div><div class="attr-desc">La Ciotat est le berceau du cin&eacute;ma (fr&egrave;res Lumi&egrave;re). L&rsquo;Eden est le plus vieux cin&eacute;ma du monde encore en activit&eacute;.</div><div class="linkrow"><a class="lnk" href="https://edentheatre.org" target="_blank">&#127916; Site de l&rsquo;Eden</a></div></div>
+      <div class="attr"><span class="tag tag-nature">Excursion</span><div class="attr-name">Cassis &amp; ses calanques</div><div class="attr-desc">20 km. Bateau ou kayak pour explorer Port-Miou, Port-Pin et En-Vau. Parmi les plus belles c&ocirc;tes de France.</div><div class="linkrow"><a class="lnk" href="https://www.google.com/maps/search/Calanque+En-Vau+Cassis" target="_blank">&#128205; Maps</a></div></div>
+      <div class="attr"><span class="tag tag-culture">Excursion</span><div class="attr-name">Aix-en-Provence</div><div class="attr-desc">40 km. March&eacute; proven&ccedil;al, cours Mirabeau, atelier C&eacute;zanne. Demi-journ&eacute;e suffisante.</div><div class="linkrow"><a class="lnk" href="https://www.aixenprovencetourism.com/en/" target="_blank">&#127968; Office de tourisme</a></div></div>
       <div class="attr"><span class="tag tag-run">Running</span><div class="attr-name">Parcours running</div><div class="attr-desc">Bord de mer port&rarr;plages : 5&ndash;8 km A/R, plat, vue mer. Long run : piste calanques Figuerolles (~12&ndash;15 km A/R). T&ocirc;t le matin recommand&eacute;.</div></div>
     </div>
   </div>
@@ -247,6 +250,54 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
   </div>
 </div>
 
+<!-- ===== VELO ===== -->
+<div class="page" id="page-velo">
+  <p class="slabel">La Ciotat &middot; 21&ndash;25 juillet</p>
+  <h2>V&eacute;lo</h2>
+
+  <div class="card">
+    <div class="chd navy">
+      <h3>Giant City La Ciotat</h3>
+      <p>Giant TCR Advanced 0 Di2 2025 &middot; 21&ndash;25 juillet &middot; 5 jours</p>
+    </div>
+    <div class="cbd">
+      <a class="map-btn navy" href="https://maps.google.com/?q=232+Avenue+Ernest+Subilia+La+Ciotat" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        232 Av. Ernest Subilia &mdash; &agrave; 1,5 km de la villa
+      </a>
+      <div class="frow">
+        <div class="fdate">21&ndash;25 Jul</div>
+        <div class="finfo">
+          <div class="froute">Giant TCR Advanced 0 Di2 2025 &mdash; Taille M</div>
+          <div class="fdetail">P&eacute;dales SPD &middot; Casque inclus &middot; Chaussures SPD apport&eacute;es</div>
+          <div class="fdetail">Maelys &mdash; giantcitylaciotat@gmail.com &middot; R&eacute;ouverture mercredi</div>
+        </div>
+        <div class="ok">&#10003; Confirm&eacute;</div>
+      </div>
+      <div class="linkrow">
+        <a class="lnk" href="mailto:giantcitylaciotat@gmail.com">&#9993; Contacter Maelys</a>
+        <a class="lnk" href="https://www.google.com/maps/search/Giant+Store+La+Ciotat" target="_blank">&#128205; Boutique sur la carte</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="sdiv"></div>
+  <p class="slabel">Parcours Komoot</p>
+  <div class="card">
+    <div class="cbd">
+      <p style="font-size:12px;color:var(--muted);margin-bottom:10px">5 parcours pr&eacute;vus autour de La Ciotat &mdash; liens Komoot exacts &agrave; ajouter d&egrave;s qu&rsquo;ils sont partag&eacute;s par Maelys.</p>
+      <div class="frow"><div class="fdate">&#127946;</div><div class="finfo"><div class="froute">Route des Cr&ecirc;tes</div><div class="fdetail">Cassis &rarr; La Ciotat &mdash; vue mer spectaculaire</div></div><div class="nok">&#9998; &agrave; ajouter</div></div>
+      <div class="frow"><div class="fdate">&#9968;</div><div class="finfo"><div class="froute">Col de l&rsquo;Espigoulier</div><div class="fdetail">Massif de la Sainte-Baume &mdash; grimpeur</div></div><div class="nok">&#9998; &agrave; ajouter</div></div>
+      <div class="frow"><div class="fdate">&#127958;</div><div class="finfo"><div class="froute">Tour des Calanques</div><div class="fdetail">La Ciotat &rarr; Cassis via les hauteurs</div></div><div class="nok">&#9998; &agrave; ajouter</div></div>
+      <div class="linkrow">
+        <a class="lnk" href="https://www.komoot.com/discover/cycling-routes/la-ciotat" target="_blank">&#128506; Komoot &mdash; parcours La Ciotat</a>
+        <a class="lnk" href="https://www.komoot.com/discover/cycling-routes/cassis" target="_blank">&#128506; Komoot &mdash; parcours Cassis</a>
+        <a class="lnk lnk-todo" href="https://www.komoot.com" target="_blank">&#9998; Ajouter mes parcours enregistr&eacute;s</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ===== VOLS ===== -->
 <div class="page" id="page-vols">
   <p class="slabel">Voyages</p>
@@ -262,6 +313,12 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
       <div class="frow"><div class="fdate">20 Jul</div><div class="finfo"><div class="froute">Palerme &rarr; Marseille</div><div class="fdetail">Ryanair FR6786 &middot; 18h15 &rarr; 20h00</div><div class="fref">G6347K</div></div><div class="ok">&#10003;</div></div>
       <div class="frow"><div class="fdate">29 Jul</div><div class="finfo"><div class="froute">Marseille &rarr; Tunis &times;4</div><div class="fdetail">Transavia TO6390 &middot; 11h30 &rarr; 12h10 &middot; Hicham, Nadia, Hedi, Mimi</div><div class="fref">X72WHR</div></div><div class="ok">&#10003;</div></div>
       <div class="frow"><div class="fdate">8&ndash;9 Ao&ucirc;t</div><div class="finfo"><div class="froute">Tunis &rarr; Paris &rarr; Boston</div><div class="fdetail">AF1185 (18h45&rarr;22h20) + AF3616 Delta (11h45&rarr;13h39)</div><div class="fref">X75Q5V</div></div><div class="ok">&#10003;</div></div>
+      <div class="linkrow">
+        <a class="lnk" href="https://www.delta.com/mytrips/" target="_blank">&#9992; Delta &mdash; Mes voyages</a>
+        <a class="lnk" href="https://www.airfrance.us/" target="_blank">&#9992; Air France</a>
+        <a class="lnk" href="https://www.ita-airways.com/en_en/fly-ita/manage-your-booking.html" target="_blank">&#9992; ITA Airways</a>
+        <a class="lnk" href="https://www.ryanair.com/gb/en/lp/myryanair" target="_blank">&#9992; Ryanair</a>
+      </div>
     </div>
   </div>
 
@@ -272,6 +329,11 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
       <div class="frow"><div class="fdate">23 Jul</div><div class="finfo"><div class="froute">Munich &rarr; Marseille</div><div class="fdetail">Lufthansa &middot; 20h00 &rarr; 21h45 &middot; Economy Comfort</div><div class="fref">7Q3DXT</div></div><div class="ok">&#10003;</div></div>
       <div class="frow"><div class="fdate">29 Jul</div><div class="finfo"><div class="froute">Marseille &rarr; Tunis</div><div class="fdetail">Transavia TO6390 &middot; avec la famille</div><div class="fref">X72WHR</div></div><div class="ok">&#10003;</div></div>
       <div class="frow"><div class="fdate">12 Ao&ucirc;t</div><div class="finfo"><div class="froute">Tunis &rarr; Paris CDG &rarr; Boston</div><div class="fdetail">AF1285 (11h50&rarr;15h25) + vol 17h40 &middot; m&ecirc;me vol que Hedi jusqu&rsquo;&agrave; CDG</div></div><div class="ok">&#10003;</div></div>
+      <div class="linkrow">
+        <a class="lnk" href="https://www.lufthansa.com/us/en/manage-booking" target="_blank">&#9992; Lufthansa</a>
+        <a class="lnk" href="https://www.transavia.com/en-EU/manage-booking/" target="_blank">&#9992; Transavia</a>
+        <a class="lnk" href="https://www.airfrance.us/" target="_blank">&#9992; Air France</a>
+      </div>
     </div>
   </div>
 
@@ -283,6 +345,11 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
       <div class="frow"><div class="fdate">18&ndash;20 Jul</div><div class="finfo"><div class="froute">Nice &mdash; 2 nuits ind&eacute;pendamment</div><div class="fdetail">Arrive &agrave; La Ciotat le 20 par train</div></div><div class="ok">&#10003;</div></div>
       <div class="frow"><div class="fdate">29 Jul</div><div class="finfo"><div class="froute">Marseille &rarr; Tunis</div><div class="fdetail">Transavia TO6390 &middot; avec la famille</div><div class="fref">X72WHR</div></div><div class="ok">&#10003;</div></div>
       <div class="frow"><div class="fdate">12 Ao&ucirc;t</div><div class="finfo"><div class="froute">Tunis &rarr; Paris CDG &rarr; New York</div><div class="fdetail">AF1285 (11h50&rarr;15h25) + vol 18h30 &middot; m&ecirc;me vol que Mimi jusqu&rsquo;&agrave; CDG</div></div><div class="ok">&#10003;</div></div>
+      <div class="linkrow">
+        <a class="lnk" href="https://www.frenchbee.com/en-us/manage-booking" target="_blank">&#9992; French bee</a>
+        <a class="lnk" href="https://www.transavia.com/en-EU/manage-booking/" target="_blank">&#9992; Transavia</a>
+        <a class="lnk" href="https://www.airfrance.us/" target="_blank">&#9992; Air France</a>
+      </div>
     </div>
   </div>
 
@@ -292,6 +359,9 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
     <div class="cbd">
       <div class="frow"><div class="fdate">20 Jul</div><div class="finfo"><div class="froute">Casablanca &rarr; Marseille</div><div class="fdetail">RAM AT728 &middot; 08h15 &rarr; 11h45</div></div><div class="ok">&#10003;</div></div>
       <div class="frow"><div class="fdate">29 Jul</div><div class="finfo"><div class="froute">Marseille &rarr; Casablanca</div><div class="fdetail">RAM AT733 &middot; Boeing 737 Max 8 &middot; 19h45 &rarr; 21h20</div></div><div class="ok">&#10003;</div></div>
+      <div class="linkrow">
+        <a class="lnk" href="https://www.royalairmaroc.com/int-en/manage-my-booking" target="_blank">&#9992; Royal Air Maroc</a>
+      </div>
     </div>
   </div>
 
@@ -301,6 +371,9 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
     <div class="cbd">
       <div class="frow"><div class="fdate">20 Jul</div><div class="finfo"><div class="froute">Casablanca &rarr; Marseille</div><div class="fdetail">RAM AT728 &middot; Embraer 190 &middot; 08h15 &rarr; 11h45</div></div><div class="ok">&#10003;</div></div>
       <div class="frow"><div class="fdate">27 Jul</div><div class="finfo"><div class="froute">Marseille &rarr; Casablanca</div><div class="fdetail">RAM AT733 &middot; Boeing 737 Max 8 &middot; 19h45 &rarr; 21h20</div></div><div class="ok">&#10003;</div></div>
+      <div class="linkrow">
+        <a class="lnk" href="https://www.royalairmaroc.com/int-en/manage-my-booking" target="_blank">&#9992; Royal Air Maroc</a>
+      </div>
     </div>
   </div>
 
@@ -326,6 +399,11 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
       <div class="frow"><div class="fdate">15 Jul</div><div class="finfo"><div class="froute">Ap&eacute;ritif de bienvenue</div><div class="fdetail">21h30 &mdash; Ciurma, Palermo Marina Yachting, Molo Trapezoidale</div></div></div>
       <div class="frow"><div class="fdate">16 Jul</div><div class="finfo"><div class="froute">C&eacute;r&eacute;monie &mdash; 15h30</div><div class="fdetail">Navette 15h00 depuis &Eacute;glise San Francesco di Paola (1 min du Best Western) &rarr; Santa Maria degli Angeli (la Gancia), quartier Kalsa</div></div></div>
       <div class="frow"><div class="fdate">16 Jul</div><div class="finfo"><div class="froute">R&eacute;ception &mdash; Castello Lanza Branciforte di Trabia</div><div class="fdetail">Navette 17h30 &rarr; Ch&acirc;teau &middot; Retour en ville ~2h00</div></div></div>
+      <div class="linkrow">
+        <a class="lnk" href="https://www.google.com/maps/search/Ciurma+Palermo+Marina+Yachting" target="_blank">&#128205; Ciurma</a>
+        <a class="lnk" href="https://www.google.com/maps/search/Chiesa+Santa+Maria+degli+Angeli+la+Gancia+Palermo" target="_blank">&#128205; La Gancia</a>
+        <a class="lnk" href="https://www.google.com/maps/search/Castello+Lanza+Branciforte+di+Trabia" target="_blank">&#128205; Castello di Trabia</a>
+      </div>
     </div>
   </div>
 
@@ -336,6 +414,11 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
       <div class="frow"><div class="fdate">15&ndash;17</div><div class="finfo"><div class="froute">Best Western Ai Cavalieri &mdash; Palerme</div><div class="fdetail">Via Sant&rsquo;Oliva 8 &middot; Check-in 14h00 &middot; Check-out 12h00</div><div class="fref">Conf 689284667</div></div><div class="ok">&#10003;</div></div>
       <div class="frow"><div class="fdate">17&ndash;19</div><div class="finfo"><div class="froute">Etnella Enoagriturismo Notti Stellate &mdash; Presa, Etna</div><div class="fdetail">Vignoble de Davide &agrave; 500m d&rsquo;altitude &middot; Check-in apr&egrave;s 15h00 (pr&eacute;venir Davide) &middot; Check-out 10h00</div><div class="fdetail">D&eacute;gustation de vins + BBQ tribal sur demande &middot; etnella.com/tipsetna (pw: etnella01@)</div><div class="fdetail">A18 sortie Fiumefreddo &rarr; Randazzo/Linguaglossa &rarr; Nunziata/Presa &rarr; suivre panneaux Etnella</div><div class="fref">Conf 142152</div></div><div class="ok">&#10003;</div></div>
       <div class="frow"><div class="fdate">19&ndash;20</div><div class="finfo"><div class="froute">Hotel Villa Sonia &mdash; Castelmola</div><div class="fdetail">Via Porta Mola 9 &middot; Tel +39 0942 28082 &middot; Vue panoramique Etna &amp; mer</div><div class="fdetail">Check-in 14h00 &middot; Check-out 10h00 &middot; Navette gratuite vers Taormine (10h, 16h, 21h20)</div><div class="fref">Conf 9088883731722</div></div><div class="ok">&#10003;</div></div>
+      <div class="linkrow">
+        <a class="lnk" href="https://www.aicavalierihotel.it/en/home-page.aspx" target="_blank">&#127968; Ai Cavalieri &mdash; site officiel</a>
+        <a class="lnk" href="https://www.etnella.com/tipsetna" target="_blank">&#127793; Etnella &mdash; site officiel</a>
+        <a class="lnk" href="https://www.hotelvillasonia.com/" target="_blank">&#127968; Villa Sonia &mdash; site officiel</a>
+      </div>
     </div>
   </div>
 
@@ -347,6 +430,12 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
       <div class="frow"><div class="fdate">Sam 18</div><div class="finfo"><div class="froute">Etna + Alcantara + Randazzo</div><div class="fdetail">Run matinal sur routes de vignoble &middot; Mont Etna (mont&eacute;e en voiture, randonn&eacute;e optionnelle) &middot; Apr&egrave;s-midi : Gorges d&rsquo;Alcantara (20 min) &mdash; canyon de lave, piscines naturelles &middot; Soir : Randazzo (village m&eacute;di&eacute;val en lave noire)</div></div></div>
       <div class="frow"><div class="fdate">Dim 19</div><div class="finfo"><div class="froute">Savoca + Castelmola + Taormine</div><div class="fdetail">Checkout Etnella 10h00 &middot; Savoca (Bar Vitelli du Parrain) &middot; Castelmola (vin d&rsquo;amande, vues) &middot; Taormine : th&eacute;&acirc;tre grec, Piazza IX Aprile, granita Bam Bar, baignade Isola Bella &middot; Check-in Villa Sonia 14h00</div></div></div>
       <div class="frow"><div class="fdate">Lun 20</div><div class="finfo"><div class="froute">Retour Palerme &rarr; vol 18h15</div><div class="fdetail">Matin tranquille Taormine/Castelmola &middot; Retour voiture Avis 11h00 &middot; Balade Palerme (march&eacute; Ballard, Quattro Canti) &middot; Ryanair PMO&rarr;MRS 18h15</div></div></div>
+      <div class="linkrow">
+        <a class="lnk" href="https://www.golealcantara.com/" target="_blank">&#127958; Gorges d&rsquo;Alcantara</a>
+        <a class="lnk" href="https://www.google.com/maps/search/Bar+Vitelli+Savoca" target="_blank">&#128205; Bar Vitelli, Savoca</a>
+        <a class="lnk" href="https://www.google.com/maps/search/Teatro+Greco+Taormina" target="_blank">&#127963; Th&eacute;&acirc;tre grec</a>
+        <a class="lnk" href="https://www.google.com/maps/search/Isola+Bella+Taormina" target="_blank">&#127958; Isola Bella</a>
+      </div>
     </div>
   </div>
 
@@ -408,10 +497,10 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
   <div class="card">
     <div class="cbd">
       <div class="attr"><span class="tag tag-run">Running</span><div class="attr-name">Promenade c&ocirc;ti&egrave;re &mdash; running matinal</div><div class="attr-desc">Bord de mer plat le long du golfe. D&eacute;part tr&egrave;s t&ocirc;t obligatoire &mdash; 30&deg;C+ d&egrave;s 9h en ao&ucirc;t. Long run possible vers Nabeul.</div></div>
-      <div class="attr"><span class="tag tag-beach">Plage</span><div class="attr-name">Plages de Hammamet</div><div class="attr-desc">Longues plages de sable fin, eau chaude (~27&deg;C). Hammamet Nord calme et r&eacute;sidentiel.</div></div>
-      <div class="attr"><span class="tag tag-culture">M&eacute;dina</span><div class="attr-name">M&eacute;dina de Hammamet</div><div class="attr-desc">Petite m&eacute;dina blanche et bleue, kasbah, march&eacute; artisanal. Id&eacute;ale en d&eacute;but ou fin de journ&eacute;e.</div></div>
-      <div class="attr"><span class="tag tag-culture">Excursion</span><div class="attr-name">Nabeul &mdash; march&eacute; de poterie</div><div class="attr-desc">15 km. Capitale de la c&eacute;ramique tunisienne. March&eacute; du vendredi pour la c&eacute;ramique, les &eacute;pices et le jasmin.</div></div>
-      <div class="attr"><span class="tag tag-culture">Journ&eacute;e</span><div class="attr-name">Tunis &amp; Carthage &amp; Sidi Bou Sa&iuml;d</div><div class="attr-desc">60 km. M&eacute;dina de Tunis (UNESCO), ruines de Carthage, Sidi Bou Sa&iuml;d (village blanc et bleu). Journ&eacute;e compl&egrave;te.</div></div>
+      <div class="attr"><span class="tag tag-beach">Plage</span><div class="attr-name">Plages de Hammamet</div><div class="attr-desc">Longues plages de sable fin, eau chaude (~27&deg;C). Hammamet Nord calme et r&eacute;sidentiel.</div><div class="linkrow"><a class="lnk" href="https://maps.app.goo.gl/g1jN7ewHZpAEKYjg9" target="_blank">&#128205; Maps</a></div></div>
+      <div class="attr"><span class="tag tag-culture">M&eacute;dina</span><div class="attr-name">M&eacute;dina de Hammamet</div><div class="attr-desc">Petite m&eacute;dina blanche et bleue, kasbah, march&eacute; artisanal. Id&eacute;ale en d&eacute;but ou fin de journ&eacute;e.</div><div class="linkrow"><a class="lnk" href="https://www.google.com/maps/search/Medina+de+Hammamet" target="_blank">&#128205; Maps</a></div></div>
+      <div class="attr"><span class="tag tag-culture">Excursion</span><div class="attr-name">Nabeul &mdash; march&eacute; de poterie</div><div class="attr-desc">15 km. Capitale de la c&eacute;ramique tunisienne. March&eacute; du vendredi pour la c&eacute;ramique, les &eacute;pices et le jasmin.</div><div class="linkrow"><a class="lnk" href="https://www.google.com/maps/search/march%C3%A9+Nabeul" target="_blank">&#128205; Maps</a></div></div>
+      <div class="attr"><span class="tag tag-culture">Journ&eacute;e</span><div class="attr-name">Tunis &amp; Carthage &amp; Sidi Bou Sa&iuml;d</div><div class="attr-desc">60 km. M&eacute;dina de Tunis (UNESCO), ruines de Carthage, Sidi Bou Sa&iuml;d (village blanc et bleu). Journ&eacute;e compl&egrave;te.</div><div class="linkrow"><a class="lnk" href="https://www.google.com/maps/search/Sidi+Bou+Said" target="_blank">&#128205; Sidi Bou Sa&iuml;d</a><a class="lnk" href="https://www.google.com/maps/search/Ruines+de+Carthage" target="_blank">&#128205; Carthage</a></div></div>
     </div>
   </div>
 
@@ -472,7 +561,7 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
 
 <footer>
   Vacances Skali &middot; Juillet 2026 &middot; La Ciotat &middot; Sicile &middot; Hammamet<br>
-  <span style="opacity:.35">Mis &agrave; jour le 11 juillet 2026</span>
+  <span style="opacity:.35">Mis &agrave; jour le 12 juillet 2026</span>
 </footer>
 
 <script>
@@ -483,6 +572,49 @@ function show(tab) {
   document.getElementById('nav-' + tab).classList.add('active');
   window.scrollTo(0,0);
 }
+
+// ===== METEO — prévisions 3 jours en direct (Open-Meteo, sans clé API) =====
+const WEATHER_LOCS = [
+  { id: 'w-laciotat', lat: 43.1748, lon: 5.6044, tz: 'Europe/Paris' },
+  { id: 'w-sicile',   lat: 38.1157, lon: 13.3615, tz: 'Europe/Rome' },
+  { id: 'w-hammamet', lat: 36.4201, lon: 10.5765, tz: 'Africa/Tunis' }
+];
+
+function wmoIcon(code) {
+  if (code === 0) return '☀️';
+  if ([1,2,3].includes(code)) return '⛅';
+  if ([45,48].includes(code)) return '🌫️';
+  if ([51,53,55,56,57,61,63,65,66,67,80,81,82].includes(code)) return '🌧️';
+  if ([71,73,75,77,85,86].includes(code)) return '❄️';
+  if ([95,96,99].includes(code)) return '⛈️';
+  return '🌡️';
+}
+
+function fmtDay(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00');
+  return d.toLocaleDateString('fr-FR', { weekday: 'short', day: 'numeric' }).replace('.', '');
+}
+
+async function loadWeather(loc) {
+  const el = document.getElementById(loc.id);
+  try {
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=${encodeURIComponent(loc.tz)}&forecast_days=3`;
+    const res = await fetch(url);
+    if (!res.ok) throw new Error('reseau');
+    const data = await res.json();
+    const days = data.daily.time.slice(0, 3);
+    el.innerHTML = days.map((day, i) => `
+      <div class="wcard">
+        <div class="wd-date">${fmtDay(day)}</div>
+        <div class="wicon">${wmoIcon(data.daily.weathercode[i])}</div>
+        <div class="wtemp">${Math.round(data.daily.temperature_2m_max[i])}&deg; <small>/ ${Math.round(data.daily.temperature_2m_min[i])}&deg;</small></div>
+      </div>`).join('');
+  } catch (e) {
+    el.innerHTML = '<div class="wcard wloading">M&eacute;t&eacute;o indisponible &mdash; v&eacute;rifiez la connexion</div>';
+  }
+}
+
+WEATHER_LOCS.forEach(loadWeather);
 </script>
 </body>
 </html>
