@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vacances Skali — Juillet 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root { --navy:#1B2A4A;--linen:#F5F0E8;--coral:#E8603C;--lavender:#8B7BA8;--white:#FFFFFF;--text:#2C2C2C;--muted:#7A7A7A;--border:#E2DDD4;--done:#3A7D44; }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Inter',sans-serif;background:var(--linen);color:var(--text);font-size:15px;line-height:1.6;}
+  .hero{background:var(--navy);color:var(--white);padding:56px 24px 48px;text-align:center;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 0%,rgba(232,96,60,.18) 0%,transparent 60%),radial-gradient(ellipse at 20% 100%,rgba(139,123,168,.15) 0%,transparent 50%);}
+  .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:16px;position:relative;}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(32px,8vw,56px);font-weight:700;line-height:1.1;margin-bottom:12px;position:relative;}
+  .hero h1 em{font-style:italic;color:#F0C99A;}
+  .hero-sub{font-size:14px;color:rgba(255,255,255,.65);font-weight:300;letter-spacing:.04em;position:relative;}
+  nav{background:var(--navy);border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:center;gap:4px;padding:0 16px 12px;flex-wrap:wrap;}
+  nav a{color:rgba(255,255,255,.6);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:.06em;padding:6px 12px;border-radius:20px;transition:all .2s;}
+  nav a:hover{background:rgba(255,255,255,.1);color:var(--white);}
+  section{max-width:760px;margin:0 auto;padding:40px 20px;}
+  .slabel{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:8px;}
+  section h2{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--navy);margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid var(--border);}
+  .card{background:var(--white);border-radius:12px;overflow:hidden;box-shadow:0 2px 16px rgba(27,42,74,.08);margin-bottom:16px;}
+  .card-header{background:var(--navy);padding:20px 24px;color:var(--white);}
+  .card-header h3{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:4px;}
+  .card-header p{font-size:13px;color:rgba(255,255,255,.65);}
+  .card-body{padding:20px 24px;}
+  .vmeta{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:20px;}
+  .mlabel{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px;}
+  .mval{font-size:14px;font-weight:500;color:var(--navy);}
+  .amenities{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
+  .amenity{background:var(--linen);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:12px;color:var(--navy);font-weight:500;}
+  .trow{display:flex;align-items:center;padding:10px 20px;border-bottom:1px solid var(--border);gap:16px;}
+  .trow:last-child{border-bottom:none;}
+  .trow.peak{background:rgba(232,96,60,.04);}
+  .tdate{font-size:13px;font-weight:600;color:var(--navy);min-width:56px;}
+  .tbar-wrap{flex:1;height:8px;background:var(--linen);border-radius:4px;overflow:hidden;}
+  .tbar{height:100%;border-radius:4px;background:var(--coral);}
+  .tcount{font-size:14px;font-weight:700;color:var(--navy);min-width:28px;text-align:right;}
+  .tnote{font-size:11px;color:var(--muted);min-width:120px;}
+  .fheader{padding:14px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);}
+  .avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--white);flex-shrink:0;}
+  .fname{font-weight:600;font-size:15px;color:var(--navy);}
+  .fsub{font-size:12px;color:var(--muted);}
+  .frow{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+  .frow:last-child{border-bottom:none;}
+  .fdate{font-size:11px;font-weight:600;color:var(--coral);min-width:52px;padding-top:2px;text-transform:uppercase;letter-spacing:.04em;}
+  .finfo{flex:1;}
+  .froute{font-size:14px;font-weight:600;color:var(--navy);}
+  .fdetail{font-size:12px;color:var(--muted);margin-top:2px;}
+  .fref{font-size:11px;font-weight:600;background:var(--linen);color:var(--navy);padding:2px 8px;border-radius:4px;font-family:monospace;margin-top:4px;display:inline-block;}
+  .ok{color:var(--done);font-size:11px;font-weight:600;white-space:nowrap;}
+  .nok{color:var(--coral);font-size:11px;font-weight:600;white-space:nowrap;}
+  .todos{list-style:none;}
+  .titem{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+  .titem:last-child{border-bottom:none;}
+  .chk{width:20px;height:20px;border-radius:50%;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:11px;}
+  .chk.done{background:var(--done);color:white;}
+  .chk.open{border:2px solid var(--coral);}
+  .ttext{font-size:14px;}
+  .ttext.done{color:var(--muted);text-decoration:line-through;}
+  .ttext strong{color:var(--navy);}
+  footer{text-align:center;padding:32px 20px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);}
+  @media(max-width:500px){.tnote{display:none;}.vmeta{grid-template-columns:1fr 1fr;}}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <p class="eyebrow">Famille Skali &middot; &Eacute;t&eacute; 2026</p>
+  <h1>La Ciotat,<br><em>nous voil&agrave;.</em></h1>
+  <p class="hero-sub">20 &ndash; 27 juillet &middot; 17 personnes &middot; 5 familles &middot; 1 villa</p>
+</div>
+
+<nav>
+  <a href="#villa">La Villa</a>
+  <a href="#programme">Programme</a>
+  <a href="#vols">Vols</a>
+  <a href="#todo">&Agrave; faire</a>
+</nav>
+
+<section id="villa">
+  <p class="slabel">Le logement</p>
+  <h2>Villa Ad&eacute;la&iuml;de</h2>
+  <div class="card">
+    <div class="card-header">
+      <h3>Villa Ad&eacute;la&iuml;de &mdash; La Ciotat</h3>
+      <p>350 m&sup2; &middot; 7 chambres &middot; 8 salles de bain &middot; Piscine chauff&eacute;e int&eacute;rieure</p>
+    </div>
+    <div class="card-body">
+      <div class="vmeta">
+        <div><span class="mlabel">Check-in</span><span class="mval">Lundi 20 juillet</span></div>
+        <div><span class="mlabel">Check-out</span><span class="mval">Lundi 27 juillet</span></div>
+        <div><span class="mlabel">H&ocirc;te</span><span class="mval">Laurence &#11088; 5.0</span></div>
+        <div><span class="mlabel">Plage</span><span class="mval">500 m &agrave; pied</span></div>
+        <div><span class="mlabel">Port</span><span class="mval">300 m &agrave; pied</span></div>
+        <div><span class="mlabel">Calanques</span><span class="mval">800 m &agrave; pied</span></div>
+      </div>
+      <div style="margin-bottom:20px;">
+        <a href="https://maps.google.com/?q=65+Avenue+Henri+Fruchier,+13600+La+Ciotat,+France" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:var(--white);text-decoration:none;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          65 Av. Henri Fruchier, 13600 La Ciotat
+        </a>
+      </div>
+      <div class="amenities">
+        <span class="amenity">&#127946; Piscine 30&deg;C</span>
+        <span class="amenity">Sauna &amp; Hammam</span>
+        <span class="amenity">Jacuzzi ext&eacute;rieur</span>
+        <span class="amenity">&#127916; Cin&eacute;ma priv&eacute;</span>
+        <span class="amenity">&#127955; Salle de jeux</span>
+        <span class="amenity">P&eacute;tanque</span>
+        <span class="amenity">&#128170; Sport</span>
+        <span class="amenity">Yoga</span>
+        <span class="amenity">&#128293; BBQ</span>
+        <span class="amenity">&#128663; 3 parkings</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="programme">
+  <p class="slabel">S&eacute;jour</p>
+  <h2>Qui est l&agrave;, quand&nbsp;?</h2>
+  <div class="card">
+    <div class="trow"><div class="tdate">Lun 20</div><div class="tbar-wrap"><div class="tbar" style="width:82%"></div></div><div class="tcount">14</div><div class="tnote">Arriv&eacute;es &eacute;chelonn&eacute;es</div></div>
+    <div class="trow"><div class="tdate">Mar 21</div><div class="tbar-wrap"><div class="tbar" style="width:82%"></div></div><div class="tcount">14</div><div class="tnote"></div></div>
+    <div class="trow"><div class="tdate">Mer 22</div><div class="tbar-wrap"><div class="tbar" style="width:94%"></div></div><div class="tcount">16</div><div class="tnote">Ghita &amp; Leo arrivent</div></div>
+    <div class="trow peak"><div class="tdate">Jeu 23</div><div class="tbar-wrap"><div class="tbar" style="width:100%"></div></div><div class="tcount" style="color:var(--coral)">17</div><div class="tnote">Mimi arrive le soir &#10024;</div></div>
+    <div class="trow peak"><div class="tdate">Ven 24</div><div class="tbar-wrap"><div class="tbar" style="width:100%"></div></div><div class="tcount" style="color:var(--coral)">17</div><div class="tnote">Tout le monde &#127881;</div></div>
+    <div class="trow"><div class="tdate">Sam 25</div><div class="tbar-wrap"><div class="tbar" style="width:88%"></div></div><div class="tcount">15</div><div class="tnote">Ghita &amp; Leo repartent</div></div>
+    <div class="trow"><div class="tdate">Dim 26</div><div class="tbar-wrap"><div class="tbar" style="width:88%"></div></div><div class="tcount">15</div><div class="tnote"></div></div>
+    <div class="trow"><div class="tdate">Lun 27</div><div class="tbar-wrap"><div class="tbar" style="width:0%"></div></div><div class="tcount" style="color:var(--muted)">&mdash;</div><div class="tnote">Check-out</div></div>
+  </div>
+</section>
+
+<section id="vols">
+  <p class="slabel">Voyages</p>
+  <h2>Vols &amp; Transports</h2>
+
+  <div class="card">
+    <div class="fheader"><div class="avatar" style="background:var(--navy)">HN</div><div><div class="fname">Hicham &amp; Nadia</div><div class="fsub">+ Hedi &amp; Mimi pour Tunis</div></div></div>
+    <div class="card-body">
+      <div class="frow"><div class="fdate">14 Jul</div><div class="finfo"><div class="froute">Boston &rarr; Rome &rarr; Palerme</div><div class="fdetail">AF3637 (Delta) &middot; AF9813 (ITA)</div><div class="fref">X75Q5V</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
+      <div class="frow"><div class="fdate">15&ndash;17</div><div class="finfo"><div class="froute">Best Western Ai Cavalieri &mdash; Palerme</div><div class="fdetail">Via Sant'Oliva 8</div><div class="fref">689284667</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
+      <div class="frow"><div class="fdate">17&ndash;20</div><div class="finfo"><div class="froute">Voiture Sicile &mdash; Cupra Formentor</div><div class="fdetail">Avis, Palerme A/R &middot; $211.92</div><div class="fref">18985959US6</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
+      <div class="frow"><div class="fdate">20 Jul</div><div class="finfo"><div class="froute">Palerme &rarr; Marseille</div><div class="fdetail">Ryanair FR6786 &middot; 18h15 &rarr; 20h00</div><div class="fref">G6347K</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
+      <div class="frow"><div class="fdate">29 Jul</div><div class="finfo"><div class="froute">Marseille &rarr; Tunis (&times;4)</div><div class="fdetail">Transavia TO6390 &middot; 11h30 &rarr; 12h10</div><div class="fref">X72WHR</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
+      <div class="frow"><div class="fdate">8&ndash;9 Ao&ucirc;t</div><div class="finfo"><div class="froute">Tunis &rarr; Paris &rarr; Boston</div><div class="fdetail">AF1185 + AF3616 (Delta)</div><div class="fref">X75Q5V</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="fheader"><div class="avatar" style="background:var(--lavender)">Mi</div><div><div class="fname">Meriem (Mimi)</div><div class="fsub">Munich &rarr; La Ciotat &rarr; Tunis &rarr; Boston</div></div></div>
+    <div class="card-body">
+      <div class="frow"><div class="fdate">23 Jul</div><div class="finfo"><div class="froute">Munich &rarr; Marseille</div><div class="fdetail">Lufthansa &middot; 20h00 &rarr; 21h45 &middot; Economy Comfort</div><div class="fref">7Q3DXT</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
+      <div class="frow"><div class="fdate">Retour</div><div class="finfo"><div class="froute">Tunis &rarr; hub &rarr; Boston</div><div class="fdetail">Voyage partag&eacute; avec Hedi jusqu'au hub</div></div><div class="nok">&rsaquo; &Agrave; r&eacute;server</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="fheader"><div class="avatar" style="background:#4A7B9D">He</div><div><div class="fname">Hedi</div><div class="fsub">? &rarr; Marseille &rarr; Tunis &rarr; New York</div></div></div>
+    <div class="card-body">
+      <div class="frow"><div class="fdate">Aller</div><div class="finfo"><div class="froute">Arriv&eacute;e &agrave; Marseille</div><div class="fdetail">Avant le 29 juillet 11h30</div></div><div class="nok">&rsaquo; &Agrave; confirmer</div></div>
+      <div class="frow"><div class="fdate">Retour</div><div class="finfo"><div class="froute">Tunis &rarr; hub &rarr; New York</div><div class="fdetail">Voyage partag&eacute; avec Mimi jusqu'au hub</div></div><div class="nok">&rsaquo; &Agrave; r&eacute;server</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="fheader"><div class="avatar" style="background:#C4956A">Ma</div><div><div class="fname">Mamia</div><div class="fsub">Casablanca &harr; Marseille</div></div></div>
+    <div class="card-body">
+      <div class="frow"><div class="fdate">20 Jul</div><div class="finfo"><div class="froute">Casablanca &rarr; Marseille</div><div class="fdetail">Royal Air Maroc AT728 &middot; 08h15 &rarr; 11h45</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
+      <div class="frow"><div class="fdate">29 Jul</div><div class="finfo"><div class="froute">Marseille &rarr; Casablanca</div><div class="fdetail">Vol direct Royal Air Maroc</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="fheader"><div class="avatar" style="background:#2D6A4F">MM</div><div><div class="fname">Moulay &amp; Malika (10 pax)</div><div class="fsub">Moulay, Jihane, Shemsi, Mehdi &middot; Malika, PA, Adam, Aida, Isma&euml;l, Gabriel</div></div></div>
+    <div class="card-body">
+      <div class="frow"><div class="fdate">20 Jul</div><div class="finfo"><div class="froute">Casablanca &rarr; Marseille</div><div class="fdetail">Royal Air Maroc AT728 &middot; Embraer 190 &middot; 08h15 &rarr; 11h45</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
+      <div class="frow"><div class="fdate">27 Jul</div><div class="finfo"><div class="froute">Marseille &rarr; Casablanca</div><div class="fdetail">Royal Air Maroc AT733 &middot; Boeing 737 Max 8 &middot; 19h45 &rarr; 21h20</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="fheader"><div class="avatar" style="background:var(--coral)">GL</div><div><div class="fname">Ghita &amp; Leo</div><div class="fsub">Mer 22 &rarr; Sam 25 juillet (3 nuits)</div></div></div>
+    <div class="card-body">
+      <div class="frow"><div class="fdate">22 Jul</div><div class="finfo"><div class="froute">Arriv&eacute;e &agrave; La Ciotat</div></div><div class="nok">Vols TBD</div></div>
+      <div class="frow"><div class="fdate">25 Jul</div><div class="finfo"><div class="froute">D&eacute;part de La Ciotat</div></div><div class="nok">Vols TBD</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="todo">
+  <p class="slabel">Logistique</p>
+  <h2>&Agrave; faire</h2>
+  <div class="card">
+    <div class="card-body">
+      <ul class="todos">
+        <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">Villa Ad&eacute;la&iuml;de r&eacute;serv&eacute;e</div></li>
+        <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">Voiture Sicile &mdash; Avis Cupra Formentor, Palerme A/R</div></li>
+        <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">Vol Mimi Munich &rarr; Marseille &mdash; Lufthansa 23 juil, r&eacute;f. 7Q3DXT</div></li>
+        <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">Vol retour Mamia MRS &rarr; CMN &mdash; 29 juillet</div></li>
+        <li class="titem"><div class="chk open"></div><div class="ttext"><strong>H&eacute;bergement 27&ndash;29 juillet</strong> &mdash; 2 nuits pr&egrave;s de Marseille, 5 pax</div></li>
+        <li class="titem"><div class="chk open"></div><div class="ttext"><strong>Transport a&eacute;roport &rarr; villa</strong> &mdash; 20 juil, 2 vagues&nbsp;: 11h45 et 20h00</div></li>
+        <li class="titem"><div class="chk open"></div><div class="ttext"><strong>Voiture Marseille</strong> &mdash; 1 v&eacute;hicule du 20 au 29 juillet</div></li>
+        <li class="titem"><div class="chk open"></div><div class="ttext"><strong>Vols retour Mimi &amp; Hedi</strong> &mdash; Tunis &rarr; hub &rarr; BOS / NYC</div></li>
+        <li class="titem"><div class="chk open"></div><div class="ttext"><strong>Vol aller Hedi</strong> &mdash; &agrave; confirmer</div></li>
+        <li class="titem"><div class="chk open"></div><div class="ttext"><strong>Vols Ghita &amp; Leo</strong> &mdash; &agrave; collecter</div></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Vacances Skali &middot; Juillet 2026 &middot; La Ciotat, Provence<br>
+  <span style="opacity:.4">Mis &agrave; jour le 20 juin 2026</span>
+</footer>
+
+</body>
+</html>
