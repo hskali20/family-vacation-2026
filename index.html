@@ -6,63 +6,126 @@
 <title>Vacances Skali — Juillet 2026</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root { --navy:#1B2A4A;--linen:#F5F0E8;--coral:#E8603C;--lavender:#8B7BA8;--white:#FFFFFF;--text:#2C2C2C;--muted:#7A7A7A;--border:#E2DDD4;--done:#3A7D44; }
-  *{box-sizing:border-box;margin:0;padding:0;}
-  body{font-family:'Inter',sans-serif;background:var(--linen);color:var(--text);font-size:15px;line-height:1.6;}
-  .hero{background:var(--navy);color:var(--white);padding:56px 24px 48px;text-align:center;position:relative;overflow:hidden;}
-  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 0%,rgba(232,96,60,.18) 0%,transparent 60%),radial-gradient(ellipse at 20% 100%,rgba(139,123,168,.15) 0%,transparent 50%);}
-  .eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:16px;position:relative;}
-  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(32px,8vw,56px);font-weight:700;line-height:1.1;margin-bottom:12px;position:relative;}
-  .hero h1 em{font-style:italic;color:#F0C99A;}
-  .hero-sub{font-size:14px;color:rgba(255,255,255,.65);font-weight:300;letter-spacing:.04em;position:relative;}
-  nav{background:var(--navy);border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:center;gap:4px;padding:0 16px 12px;flex-wrap:wrap;}
-  nav a{color:rgba(255,255,255,.6);text-decoration:none;font-size:12px;font-weight:500;letter-spacing:.06em;padding:6px 12px;border-radius:20px;transition:all .2s;}
-  nav a:hover{background:rgba(255,255,255,.1);color:var(--white);}
-  section{max-width:760px;margin:0 auto;padding:40px 20px;}
-  .slabel{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:8px;}
-  section h2{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;color:var(--navy);margin-bottom:24px;padding-bottom:12px;border-bottom:2px solid var(--border);}
-  .card{background:var(--white);border-radius:12px;overflow:hidden;box-shadow:0 2px 16px rgba(27,42,74,.08);margin-bottom:16px;}
-  .card-header{background:var(--navy);padding:20px 24px;color:var(--white);}
-  .card-header h3{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:4px;}
-  .card-header p{font-size:13px;color:rgba(255,255,255,.65);}
-  .card-body{padding:20px 24px;}
-  .vmeta{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:12px;margin-bottom:20px;}
-  .mlabel{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:2px;}
-  .mval{font-size:14px;font-weight:500;color:var(--navy);}
-  .amenities{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px;}
-  .amenity{background:var(--linen);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:12px;color:var(--navy);font-weight:500;}
-  .trow{display:flex;align-items:center;padding:10px 20px;border-bottom:1px solid var(--border);gap:16px;}
-  .trow:last-child{border-bottom:none;}
-  .trow.peak{background:rgba(232,96,60,.04);}
-  .tdate{font-size:13px;font-weight:600;color:var(--navy);min-width:56px;}
-  .tbar-wrap{flex:1;height:8px;background:var(--linen);border-radius:4px;overflow:hidden;}
-  .tbar{height:100%;border-radius:4px;background:var(--coral);}
-  .tcount{font-size:14px;font-weight:700;color:var(--navy);min-width:28px;text-align:right;}
-  .tnote{font-size:11px;color:var(--muted);min-width:120px;}
-  .fheader{padding:14px 20px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);}
-  .avatar{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;color:var(--white);flex-shrink:0;}
-  .fname{font-weight:600;font-size:15px;color:var(--navy);}
-  .fsub{font-size:12px;color:var(--muted);}
-  .frow{display:flex;gap:12px;padding:10px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
-  .frow:last-child{border-bottom:none;}
-  .fdate{font-size:11px;font-weight:600;color:var(--coral);min-width:52px;padding-top:2px;text-transform:uppercase;letter-spacing:.04em;}
-  .finfo{flex:1;}
-  .froute{font-size:14px;font-weight:600;color:var(--navy);}
-  .fdetail{font-size:12px;color:var(--muted);margin-top:2px;}
-  .fref{font-size:11px;font-weight:600;background:var(--linen);color:var(--navy);padding:2px 8px;border-radius:4px;font-family:monospace;margin-top:4px;display:inline-block;}
-  .ok{color:var(--done);font-size:11px;font-weight:600;white-space:nowrap;}
-  .nok{color:var(--coral);font-size:11px;font-weight:600;white-space:nowrap;}
-  .todos{list-style:none;}
-  .titem{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
-  .titem:last-child{border-bottom:none;}
-  .chk{width:20px;height:20px;border-radius:50%;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:11px;}
-  .chk.done{background:var(--done);color:white;}
-  .chk.open{border:2px solid var(--coral);}
-  .ttext{font-size:14px;}
-  .ttext.done{color:var(--muted);text-decoration:line-through;}
-  .ttext strong{color:var(--navy);}
-  footer{text-align:center;padding:32px 20px;font-size:12px;color:var(--muted);border-top:1px solid var(--border);}
-  @media(max-width:500px){.tnote{display:none;}.vmeta{grid-template-columns:1fr 1fr;}}
+:root{--navy:#1B2A4A;--linen:#F5F0E8;--coral:#E8603C;--lav:#8B7BA8;--white:#fff;--text:#2C2C2C;--muted:#7A7A7A;--border:#E2DDD4;--done:#3A7D44;--sicily:#7B3A10;--tunisia:#2D6A4F;}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Inter',sans-serif;background:var(--linen);color:var(--text);font-size:15px;line-height:1.6;}
+
+/* HERO */
+.hero{background:var(--navy);color:var(--white);padding:52px 24px 44px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 0%,rgba(232,96,60,.2) 0%,transparent 60%),radial-gradient(ellipse at 20% 100%,rgba(139,123,168,.15) 0%,transparent 50%);}
+.eyebrow{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--coral);font-weight:600;margin-bottom:14px;position:relative;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(28px,7vw,52px);font-weight:700;line-height:1.1;margin-bottom:10px;position:relative;}
+.hero h1 em{font-style:italic;color:#F0C99A;}
+.hero-sub{font-size:13px;color:rgba(255,255,255,.6);font-weight:300;letter-spacing:.04em;position:relative;}
+
+/* NAV */
+nav{background:var(--navy);border-top:1px solid rgba(255,255,255,.08);display:flex;justify-content:center;gap:4px;padding:0 12px 12px;flex-wrap:wrap;}
+nav a{color:rgba(255,255,255,.55);text-decoration:none;font-size:11px;font-weight:600;letter-spacing:.06em;padding:5px 11px;border-radius:20px;transition:all .2s;cursor:pointer;}
+nav a:hover,nav a.active{background:rgba(255,255,255,.12);color:var(--white);}
+
+/* PAGES */
+.page{display:none;max-width:760px;margin:0 auto;padding:36px 20px 60px;}
+.page.active{display:block;}
+.slabel{font-size:10px;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--coral);margin-bottom:6px;}
+.page h2{font-family:'Playfair Display',serif;font-size:24px;font-weight:700;color:var(--navy);margin-bottom:22px;padding-bottom:10px;border-bottom:2px solid var(--border);}
+.sdiv{height:1px;background:var(--border);margin:24px 0;}
+
+/* CARDS */
+.card{background:var(--white);border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(27,42,74,.07);margin-bottom:14px;}
+.chd{padding:18px 22px;color:var(--white);}
+.chd.navy{background:var(--navy);}
+.chd.sicily{background:var(--sicily);}
+.chd.tunisia{background:var(--tunisia);}
+.chd h3{font-family:'Playfair Display',serif;font-size:19px;margin-bottom:3px;}
+.chd p{font-size:12px;color:rgba(255,255,255,.65);}
+.cbd{padding:18px 22px;}
+
+/* VILLA META */
+.vmeta{display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:10px;margin-bottom:18px;}
+.ml{font-size:10px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);display:block;margin-bottom:1px;}
+.mv{font-size:13px;font-weight:500;color:var(--navy);}
+.amenities{display:flex;flex-wrap:wrap;gap:6px;}
+.am{background:var(--linen);border:1px solid var(--border);border-radius:20px;padding:3px 11px;font-size:12px;color:var(--navy);font-weight:500;}
+
+/* MAP BUTTONS */
+.map-btn{display:inline-flex;align-items:center;gap:7px;color:var(--white);text-decoration:none;padding:9px 16px;border-radius:8px;font-size:12px;font-weight:600;margin-bottom:8px;}
+.map-btn.navy{background:var(--navy);}
+.map-btn.sicily{background:var(--sicily);}
+.map-btn.tunisia{background:var(--tunisia);}
+.map-btn.full{display:flex;width:100%;}
+.route-note{font-size:11px;color:var(--muted);margin:2px 0 10px 4px;}
+
+/* HEADCOUNT */
+.trow{display:flex;align-items:center;padding:9px 18px;border-bottom:1px solid var(--border);gap:14px;}
+.trow:last-child{border-bottom:none;}
+.trow.peak{background:rgba(232,96,60,.04);}
+.tdate{font-size:13px;font-weight:600;color:var(--navy);min-width:56px;}
+.tbar-w{flex:1;height:7px;background:var(--linen);border-radius:4px;overflow:hidden;}
+.tbar{height:100%;border-radius:4px;background:var(--coral);}
+.tcount{font-size:14px;font-weight:700;color:var(--navy);min-width:26px;text-align:right;}
+.tnote{font-size:11px;color:var(--muted);min-width:110px;}
+
+/* FLIGHT ROWS */
+.fhdr{padding:13px 18px;display:flex;align-items:center;gap:11px;border-bottom:1px solid var(--border);}
+.av{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--white);flex-shrink:0;}
+.fn{font-weight:600;font-size:14px;color:var(--navy);}
+.fs{font-size:11px;color:var(--muted);}
+.frow{display:flex;gap:11px;padding:9px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.frow:last-child{border-bottom:none;}
+.fdate{font-size:11px;font-weight:600;color:var(--coral);min-width:52px;padding-top:2px;text-transform:uppercase;letter-spacing:.04em;}
+.finfo{flex:1;}
+.froute{font-size:13px;font-weight:600;color:var(--navy);}
+.fdetail{font-size:12px;color:var(--muted);margin-top:1px;}
+.fref{font-size:10px;font-weight:600;background:var(--linen);color:var(--navy);padding:2px 7px;border-radius:4px;font-family:monospace;margin-top:3px;display:inline-block;}
+.ok{color:var(--done);font-size:11px;font-weight:600;white-space:nowrap;}
+.nok{color:var(--coral);font-size:11px;font-weight:600;white-space:nowrap;}
+
+/* WEATHER */
+.wgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:14px;}
+.wcard{background:var(--white);border-radius:10px;padding:14px;text-align:center;box-shadow:0 1px 6px rgba(27,42,74,.06);}
+.wloc{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.wtemp{font-size:26px;font-weight:700;color:var(--navy);line-height:1;}
+.wicon{font-size:22px;margin-bottom:3px;}
+.wdesc{font-size:11px;color:var(--muted);margin-top:3px;}
+.wsea{font-size:11px;color:var(--lav);font-weight:500;margin-top:2px;}
+
+/* ATTRACTIONS */
+.attr{padding:13px 0;border-bottom:1px solid var(--border);}
+.attr:last-child{border-bottom:none;}
+.attr-name{font-size:13px;font-weight:600;color:var(--navy);margin-bottom:3px;}
+.attr-desc{font-size:12px;color:var(--muted);}
+.tag{font-size:10px;padding:2px 7px;border-radius:10px;font-weight:600;display:inline-block;margin-bottom:5px;}
+.tag-beach{background:#E3F2FD;color:#1565C0;}
+.tag-nature{background:#E8F5E9;color:#2E7D32;}
+.tag-culture{background:#FFF3E0;color:#E65100;}
+.tag-run{background:#F3E5F5;color:#6A1B9A;}
+
+/* SECTION HEADER inside card */
+.sec-hd{font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:8px;}
+
+/* TODO */
+.todos{list-style:none;}
+.titem{display:flex;gap:11px;padding:11px 0;border-bottom:1px solid var(--border);align-items:flex-start;}
+.titem:last-child{border-bottom:none;}
+.chk{width:19px;height:19px;border-radius:50%;flex-shrink:0;margin-top:1px;display:flex;align-items:center;justify-content:center;font-size:10px;}
+.chk.done{background:var(--done);color:var(--white);}
+.chk.open{border:2px solid var(--coral);}
+.ttext{font-size:13px;}
+.ttext.done{color:var(--muted);text-decoration:line-through;}
+.ttext strong{color:var(--navy);}
+
+/* BUDGET */
+.bnote{font-size:12px;color:var(--muted);background:rgba(27,42,74,.04);border:1px solid var(--border);border-radius:8px;padding:8px 12px;margin-bottom:14px;}
+.brow{display:flex;justify-content:space-between;align-items:center;padding:9px 0;border-bottom:1px solid var(--border);}
+.brow:last-child{border-bottom:none;}
+.bitem{font-size:13px;color:var(--text);}
+.bitem small{display:block;font-size:11px;color:var(--muted);}
+.bamt{font-size:13px;font-weight:600;color:var(--navy);}
+.btotal{display:flex;justify-content:space-between;padding:13px 0;border-top:2px solid var(--border);margin-top:4px;}
+.btotal span{font-size:15px;font-weight:700;color:var(--navy);}
+
+footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);border-top:1px solid var(--border);}
+@media(max-width:500px){.tnote{display:none;}.vmeta{grid-template-columns:1fr 1fr;}.wgrid{grid-template-columns:1fr 1fr;}}
 </style>
 </head>
 <body>
@@ -70,152 +133,356 @@
 <div class="hero">
   <p class="eyebrow">Famille Skali &middot; &Eacute;t&eacute; 2026</p>
   <h1>La Ciotat,<br><em>nous voil&agrave;.</em></h1>
-  <p class="hero-sub">20 &ndash; 27 juillet &middot; 17 personnes &middot; 5 familles &middot; 1 villa</p>
+  <p class="hero-sub">20 &ndash; 27 juillet &middot; 17 personnes &middot; 5 familles &middot; Sicile &middot; Provence &middot; Hammamet</p>
 </div>
 
 <nav>
-  <a href="#villa">La Villa</a>
-  <a href="#programme">Programme</a>
-  <a href="#vols">Vols</a>
-  <a href="#todo">&Agrave; faire</a>
+  <a onclick="show('villa')" id="nav-villa" class="active">La Villa</a>
+  <a onclick="show('programme')" id="nav-programme">Programme</a>
+  <a onclick="show('vols')" id="nav-vols">Vols</a>
+  <a onclick="show('sicile')" id="nav-sicile">Sicile</a>
+  <a onclick="show('tunisie')" id="nav-tunisie">Tunisie</a>
+  <a onclick="show('todo')" id="nav-todo">&Agrave; faire</a>
+  <a onclick="show('budget')" id="nav-budget">Budget</a>
 </nav>
 
-<section id="villa">
+<!-- ===== VILLA ===== -->
+<div class="page active" id="page-villa">
   <p class="slabel">Le logement</p>
-  <h2>Villa Ad&eacute;la&iuml;de</h2>
+  <h2>Villa Ad&eacute;la&iuml;de &mdash; La Ciotat</h2>
+
   <div class="card">
-    <div class="card-header">
-      <h3>Villa Ad&eacute;la&iuml;de &mdash; La Ciotat</h3>
-      <p>350 m&sup2; &middot; 7 chambres &middot; 8 salles de bain &middot; Piscine chauff&eacute;e int&eacute;rieure</p>
+    <div class="chd navy">
+      <h3>Villa Ad&eacute;la&iuml;de</h3>
+      <p>350 m&sup2; &middot; 7 chambres en-suite &middot; 8 salles de bain &middot; Piscine chauff&eacute;e 30&deg;C</p>
     </div>
-    <div class="card-body">
+    <div class="cbd">
+      <a class="map-btn navy" href="https://maps.google.com/?q=65+Avenue+Henri+Fruchier,+13600+La+Ciotat" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        65 Av. Henri Fruchier, 13600 La Ciotat
+      </a>
       <div class="vmeta">
-        <div><span class="mlabel">Check-in</span><span class="mval">Lundi 20 juillet</span></div>
-        <div><span class="mlabel">Check-out</span><span class="mval">Lundi 27 juillet</span></div>
-        <div><span class="mlabel">H&ocirc;te</span><span class="mval">Laurence &#11088; 5.0</span></div>
-        <div><span class="mlabel">Plage</span><span class="mval">500 m &agrave; pied</span></div>
-        <div><span class="mlabel">Port</span><span class="mval">300 m &agrave; pied</span></div>
-        <div><span class="mlabel">Calanques</span><span class="mval">800 m &agrave; pied</span></div>
-      </div>
-      <div style="margin-bottom:20px;">
-        <a href="https://maps.google.com/?q=65+Avenue+Henri+Fruchier,+13600+La+Ciotat,+France" target="_blank" style="display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:var(--white);text-decoration:none;padding:10px 18px;border-radius:8px;font-size:13px;font-weight:600;">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          65 Av. Henri Fruchier, 13600 La Ciotat
-        </a>
+        <div><span class="ml">Check-in</span><span class="mv">Lundi 20 juillet</span></div>
+        <div><span class="ml">Check-out</span><span class="mv">Lundi 27 juillet</span></div>
+        <div><span class="ml">H&ocirc;te</span><span class="mv">Laurence &#11088; 5.0</span></div>
+        <div><span class="ml">Plage</span><span class="mv">500 m &agrave; pied</span></div>
+        <div><span class="ml">Port</span><span class="mv">300 m &agrave; pied</span></div>
+        <div><span class="ml">Calanques</span><span class="mv">800 m &agrave; pied</span></div>
       </div>
       <div class="amenities">
-        <span class="amenity">&#127946; Piscine 30&deg;C</span>
-        <span class="amenity">Sauna &amp; Hammam</span>
-        <span class="amenity">Jacuzzi ext&eacute;rieur</span>
-        <span class="amenity">&#127916; Cin&eacute;ma priv&eacute;</span>
-        <span class="amenity">&#127955; Salle de jeux</span>
-        <span class="amenity">P&eacute;tanque</span>
-        <span class="amenity">&#128170; Sport</span>
-        <span class="amenity">Yoga</span>
-        <span class="amenity">&#128293; BBQ</span>
-        <span class="amenity">&#128663; 3 parkings</span>
+        <span class="am">&#127946; Piscine 30&deg;C</span>
+        <span class="am">Sauna &amp; Hammam</span>
+        <span class="am">Jacuzzi ext.</span>
+        <span class="am">&#127916; Cin&eacute;ma</span>
+        <span class="am">&#127955; Jeux</span>
+        <span class="am">P&eacute;tanque</span>
+        <span class="am">&#128170; Sport</span>
+        <span class="am">Yoga</span>
+        <span class="am">&#128293; BBQ</span>
+        <span class="am">&#128663; 3 parkings</span>
       </div>
     </div>
   </div>
-</section>
 
-<section id="programme">
+  <div class="sdiv"></div>
+  <p class="slabel">V&eacute;lo &mdash; La Ciotat</p>
+  <div class="card">
+    <div class="chd navy">
+      <h3>Giant City La Ciotat</h3>
+      <p>Giant TCR Advanced 0 Di2 2025 &middot; 21&ndash;25 juillet &middot; 5 jours</p>
+    </div>
+    <div class="cbd">
+      <a class="map-btn navy" href="https://maps.google.com/?q=232+Avenue+Ernest+Subilia+La+Ciotat" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        232 Av. Ernest Subilia &mdash; &agrave; 1,5 km de la villa
+      </a>
+      <div class="frow">
+        <div class="fdate">21&ndash;25 Jul</div>
+        <div class="finfo">
+          <div class="froute">Giant TCR Advanced 0 Di2 2025 &mdash; Taille M</div>
+          <div class="fdetail">P&eacute;dales SPD &middot; Casque inclus &middot; Chaussures SPD apport&eacute;es</div>
+          <div class="fdetail">Maelys &mdash; giantcitylaciotat@gmail.com &middot; R&eacute;ouverture mercredi</div>
+          <div class="fdetail">5 parcours Komoot fournis (Route des Cr&ecirc;tes, Col de l&rsquo;Espigoulier, Calanques...)</div>
+        </div>
+        <div class="ok">&#10003; Confirm&eacute;</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sdiv"></div>
+  <p class="slabel">M&eacute;t&eacute;o pr&eacute;vue &mdash; juillet</p>
+  <div class="wgrid">
+    <div class="wcard"><div class="wloc">La Ciotat</div><div class="wicon">&#9728;</div><div class="wtemp">30&deg;</div><div class="wdesc">Ensoleill&eacute;</div><div class="wsea">Mer ~25&deg;C</div></div>
+    <div class="wcard"><div class="wloc">Sicile</div><div class="wicon">&#9728;</div><div class="wtemp">32&deg;</div><div class="wdesc">Tr&egrave;s chaud</div><div class="wsea">Mer ~26&deg;C</div></div>
+    <div class="wcard"><div class="wloc">Hammamet</div><div class="wicon">&#9728;</div><div class="wtemp">34&deg;</div><div class="wdesc">Chaud &amp; sec</div><div class="wsea">Mer ~27&deg;C</div></div>
+  </div>
+
+  <div class="sdiv"></div>
+  <p class="slabel">Activit&eacute;s &amp; visites</p>
+  <div class="card">
+    <div class="cbd">
+      <div class="attr"><span class="tag tag-beach">Plage</span><div class="attr-name">Plages des Lecques &amp; La Madrague</div><div class="attr-desc">Les plus belles plages de sable, 5&ndash;10 min en voiture. Eau cristalline, id&eacute;al pour les enfants.</div></div>
+      <div class="attr"><span class="tag tag-nature">Nature</span><div class="attr-name">Calanques de La Ciotat</div><div class="attr-desc">Criques sauvages &agrave; 800m &agrave; pied. Figuerolles et Cap de l&rsquo;Aigle incontournables. Randonn&eacute;e ou bateau.</div></div>
+      <div class="attr"><span class="tag tag-culture">Culture</span><div class="attr-name">Vieux-port &amp; Eden Cin&eacute;ma</div><div class="attr-desc">La Ciotat est le berceau du cin&eacute;ma (fr&egrave;res Lumi&egrave;re). L&rsquo;Eden est le plus vieux cin&eacute;ma du monde encore en activit&eacute;.</div></div>
+      <div class="attr"><span class="tag tag-nature">Excursion</span><div class="attr-name">Cassis &amp; ses calanques</div><div class="attr-desc">20 km. Bateau ou kayak pour explorer Port-Miou, Port-Pin et En-Vau. Parmi les plus belles c&ocirc;tes de France.</div></div>
+      <div class="attr"><span class="tag tag-culture">Excursion</span><div class="attr-name">Aix-en-Provence</div><div class="attr-desc">40 km. March&eacute; proven&ccedil;al, cours Mirabeau, atelier C&eacute;zanne. Demi-journ&eacute;e suffisante.</div></div>
+      <div class="attr"><span class="tag tag-run">Running</span><div class="attr-name">Parcours running</div><div class="attr-desc">Bord de mer port&rarr;plages : 5&ndash;8 km A/R, plat, vue mer. Long run : piste calanques Figuerolles (~12&ndash;15 km A/R). T&ocirc;t le matin recommand&eacute;.</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== PROGRAMME ===== -->
+<div class="page" id="page-programme">
   <p class="slabel">S&eacute;jour</p>
   <h2>Qui est l&agrave;, quand&nbsp;?</h2>
   <div class="card">
-    <div class="trow"><div class="tdate">Lun 20</div><div class="tbar-wrap"><div class="tbar" style="width:82%"></div></div><div class="tcount">14</div><div class="tnote">Arriv&eacute;es &eacute;chelonn&eacute;es</div></div>
-    <div class="trow"><div class="tdate">Mar 21</div><div class="tbar-wrap"><div class="tbar" style="width:82%"></div></div><div class="tcount">14</div><div class="tnote"></div></div>
-    <div class="trow"><div class="tdate">Mer 22</div><div class="tbar-wrap"><div class="tbar" style="width:94%"></div></div><div class="tcount">16</div><div class="tnote">Ghita &amp; Leo arrivent</div></div>
-    <div class="trow peak"><div class="tdate">Jeu 23</div><div class="tbar-wrap"><div class="tbar" style="width:100%"></div></div><div class="tcount" style="color:var(--coral)">17</div><div class="tnote">Mimi arrive le soir &#10024;</div></div>
-    <div class="trow peak"><div class="tdate">Ven 24</div><div class="tbar-wrap"><div class="tbar" style="width:100%"></div></div><div class="tcount" style="color:var(--coral)">17</div><div class="tnote">Tout le monde &#127881;</div></div>
-    <div class="trow"><div class="tdate">Sam 25</div><div class="tbar-wrap"><div class="tbar" style="width:88%"></div></div><div class="tcount">15</div><div class="tnote">Ghita &amp; Leo repartent</div></div>
-    <div class="trow"><div class="tdate">Dim 26</div><div class="tbar-wrap"><div class="tbar" style="width:88%"></div></div><div class="tcount">15</div><div class="tnote"></div></div>
-    <div class="trow"><div class="tdate">Lun 27</div><div class="tbar-wrap"><div class="tbar" style="width:0%"></div></div><div class="tcount" style="color:var(--muted)">&mdash;</div><div class="tnote">Check-out</div></div>
+    <div class="trow"><div class="tdate">Lun 20</div><div class="tbar-w"><div class="tbar" style="width:82%"></div></div><div class="tcount">14</div><div class="tnote">Moulay/Malika 11h45, H&amp;N+Hedi 20h</div></div>
+    <div class="trow"><div class="tdate">Mar 21</div><div class="tbar-w"><div class="tbar" style="width:82%"></div></div><div class="tcount">14</div><div class="tnote"></div></div>
+    <div class="trow"><div class="tdate">Mer 22</div><div class="tbar-w"><div class="tbar" style="width:94%"></div></div><div class="tcount">16</div><div class="tnote">Ghita &amp; Leo (train)</div></div>
+    <div class="trow peak"><div class="tdate">Jeu 23</div><div class="tbar-w"><div class="tbar" style="width:100%"></div></div><div class="tcount" style="color:var(--coral)">17</div><div class="tnote">Mimi arrive 21h45 &#10024;</div></div>
+    <div class="trow peak"><div class="tdate">Ven 24</div><div class="tbar-w"><div class="tbar" style="width:100%"></div></div><div class="tcount" style="color:var(--coral)">17</div><div class="tnote">Tout le monde &#127881;</div></div>
+    <div class="trow"><div class="tdate">Sam 25</div><div class="tbar-w"><div class="tbar" style="width:88%"></div></div><div class="tcount">15</div><div class="tnote">Ghita &amp; Leo repartent</div></div>
+    <div class="trow"><div class="tdate">Dim 26</div><div class="tbar-w"><div class="tbar" style="width:88%"></div></div><div class="tcount">15</div><div class="tnote"></div></div>
+    <div class="trow"><div class="tdate">Lun 27</div><div class="tbar-w"><div class="tbar" style="width:0%"></div></div><div class="tcount" style="color:var(--muted)">&mdash;</div><div class="tnote">Check-out</div></div>
   </div>
-</section>
+</div>
 
-<section id="vols">
+<!-- ===== VOLS ===== -->
+<div class="page" id="page-vols">
   <p class="slabel">Voyages</p>
   <h2>Vols &amp; Transports</h2>
 
+  <!-- Hicham & Nadia -->
   <div class="card">
-    <div class="fheader"><div class="avatar" style="background:var(--navy)">HN</div><div><div class="fname">Hicham &amp; Nadia</div><div class="fsub">+ Hedi &amp; Mimi pour Tunis</div></div></div>
-    <div class="card-body">
-      <div class="frow"><div class="fdate">14 Jul</div><div class="finfo"><div class="froute">Boston &rarr; Rome &rarr; Palerme</div><div class="fdetail">AF3637 (Delta) &middot; AF9813 (ITA)</div><div class="fref">X75Q5V</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
-      <div class="frow"><div class="fdate">15&ndash;17</div><div class="finfo"><div class="froute">Best Western Ai Cavalieri &mdash; Palerme</div><div class="fdetail">Via Sant'Oliva 8</div><div class="fref">689284667</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
-      <div class="frow"><div class="fdate">17&ndash;20</div><div class="finfo"><div class="froute">Voiture Sicile &mdash; Cupra Formentor</div><div class="fdetail">Avis, Palerme A/R &middot; $211.92</div><div class="fref">18985959US6</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
-      <div class="frow"><div class="fdate">20 Jul</div><div class="finfo"><div class="froute">Palerme &rarr; Marseille</div><div class="fdetail">Ryanair FR6786 &middot; 18h15 &rarr; 20h00</div><div class="fref">G6347K</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
-      <div class="frow"><div class="fdate">29 Jul</div><div class="finfo"><div class="froute">Marseille &rarr; Tunis (&times;4)</div><div class="fdetail">Transavia TO6390 &middot; 11h30 &rarr; 12h10</div><div class="fref">X72WHR</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
-      <div class="frow"><div class="fdate">8&ndash;9 Ao&ucirc;t</div><div class="finfo"><div class="froute">Tunis &rarr; Paris &rarr; Boston</div><div class="fdetail">AF1185 + AF3616 (Delta)</div><div class="fref">X75Q5V</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
+    <div class="fhdr"><div class="av" style="background:var(--navy)">HN</div><div><div class="fn">Hicham &amp; Nadia</div><div class="fs">Boston &rarr; Sicile &rarr; Marseille &rarr; Tunis &rarr; Boston</div></div></div>
+    <div class="cbd">
+      <div class="frow"><div class="fdate">14 Jul</div><div class="finfo"><div class="froute">Boston &rarr; Rome &rarr; Palerme</div><div class="fdetail">AF3637 (Delta) + AF9813 (ITA Airways)</div><div class="fref">X75Q5V</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">15&ndash;17</div><div class="finfo"><div class="froute">Best Western Ai Cavalieri &mdash; Palerme</div><div class="fdetail">Via Sant&rsquo;Oliva 8 &middot; Mariage Giada &amp; Riccardo</div><div class="fref">689284667</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">17&ndash;20</div><div class="finfo"><div class="froute">Voiture Sicile &mdash; Cupra Formentor</div><div class="fdetail">Avis Piazza Boiardo, Palerme &middot; Aller-retour</div><div class="fref">18985959US6</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">20 Jul</div><div class="finfo"><div class="froute">Palerme &rarr; Marseille</div><div class="fdetail">Ryanair FR6786 &middot; 18h15 &rarr; 20h00</div><div class="fref">G6347K</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">29 Jul</div><div class="finfo"><div class="froute">Marseille &rarr; Tunis &times;4</div><div class="fdetail">Transavia TO6390 &middot; 11h30 &rarr; 12h10 &middot; Hicham, Nadia, Hedi, Mimi</div><div class="fref">X72WHR</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">8&ndash;9 Ao&ucirc;t</div><div class="finfo"><div class="froute">Tunis &rarr; Paris &rarr; Boston</div><div class="fdetail">AF1185 (18h45&rarr;22h20) + AF3616 Delta (11h45&rarr;13h39)</div><div class="fref">X75Q5V</div></div><div class="ok">&#10003;</div></div>
+    </div>
+  </div>
+
+  <!-- Meriem -->
+  <div class="card">
+    <div class="fhdr"><div class="av" style="background:var(--lav)">Mi</div><div><div class="fn">Meriem (Mimi)</div><div class="fs">Munich &rarr; La Ciotat &rarr; Tunis &rarr; Boston</div></div></div>
+    <div class="cbd">
+      <div class="frow"><div class="fdate">23 Jul</div><div class="finfo"><div class="froute">Munich &rarr; Marseille</div><div class="fdetail">Lufthansa &middot; 20h00 &rarr; 21h45 &middot; Economy Comfort</div><div class="fref">7Q3DXT</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">29 Jul</div><div class="finfo"><div class="froute">Marseille &rarr; Tunis</div><div class="fdetail">Transavia TO6390 &middot; avec la famille</div><div class="fref">X72WHR</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">12 Ao&ucirc;t</div><div class="finfo"><div class="froute">Tunis &rarr; Paris CDG &rarr; Boston</div><div class="fdetail">AF1285 (11h50&rarr;15h25) + vol 17h40 &middot; m&ecirc;me vol que Hedi jusqu&rsquo;&agrave; CDG</div></div><div class="ok">&#10003;</div></div>
+    </div>
+  </div>
+
+  <!-- Hedi -->
+  <div class="card">
+    <div class="fhdr"><div class="av" style="background:#4A7B9D">He</div><div><div class="fn">Hedi</div><div class="fs">New York &rarr; Nice (2 nuits) &rarr; La Ciotat &rarr; Tunis &rarr; New York</div></div></div>
+    <div class="cbd">
+      <div class="frow"><div class="fdate">17&ndash;18 Jul</div><div class="finfo"><div class="froute">Newark &rarr; Paris Orly &rarr; Nice</div><div class="fdetail">French Bee BF721 + Transavia TO7138 &middot; arriv&eacute;e Nice 16h25</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">18&ndash;20 Jul</div><div class="finfo"><div class="froute">Nice &mdash; 2 nuits ind&eacute;pendamment</div><div class="fdetail">Arrive &agrave; La Ciotat le 20 par train</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">29 Jul</div><div class="finfo"><div class="froute">Marseille &rarr; Tunis</div><div class="fdetail">Transavia TO6390 &middot; avec la famille</div><div class="fref">X72WHR</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">12 Ao&ucirc;t</div><div class="finfo"><div class="froute">Tunis &rarr; Paris CDG &rarr; New York</div><div class="fdetail">AF1285 (11h50&rarr;15h25) + vol 18h30 &middot; m&ecirc;me vol que Mimi jusqu&rsquo;&agrave; CDG</div></div><div class="ok">&#10003;</div></div>
+    </div>
+  </div>
+
+  <!-- Mamia -->
+  <div class="card">
+    <div class="fhdr"><div class="av" style="background:#C4956A">Ma</div><div><div class="fn">Mamia</div><div class="fs">Casablanca &harr; Marseille</div></div></div>
+    <div class="cbd">
+      <div class="frow"><div class="fdate">20 Jul</div><div class="finfo"><div class="froute">Casablanca &rarr; Marseille</div><div class="fdetail">RAM AT728 &middot; 08h15 &rarr; 11h45</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">29 Jul</div><div class="finfo"><div class="froute">Marseille &rarr; Casablanca</div><div class="fdetail">RAM AT733 &middot; Boeing 737 Max 8 &middot; 19h45 &rarr; 21h20</div></div><div class="ok">&#10003;</div></div>
+    </div>
+  </div>
+
+  <!-- Moulay & Malika -->
+  <div class="card">
+    <div class="fhdr"><div class="av" style="background:#2D6A4F">MM</div><div><div class="fn">Moulay &amp; Malika (10 pax)</div><div class="fs">Moulay, Jihane, Shemsi, Mehdi &middot; Malika, PA, Adam, Aida, Isma&euml;l, Gabriel</div></div></div>
+    <div class="cbd">
+      <div class="frow"><div class="fdate">20 Jul</div><div class="finfo"><div class="froute">Casablanca &rarr; Marseille</div><div class="fdetail">RAM AT728 &middot; Embraer 190 &middot; 08h15 &rarr; 11h45</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">27 Jul</div><div class="finfo"><div class="froute">Marseille &rarr; Casablanca</div><div class="fdetail">RAM AT733 &middot; Boeing 737 Max 8 &middot; 19h45 &rarr; 21h20</div></div><div class="ok">&#10003;</div></div>
+    </div>
+  </div>
+
+  <!-- Ghita & Leo -->
+  <div class="card">
+    <div class="fhdr"><div class="av" style="background:var(--coral)">GL</div><div><div class="fn">Ghita &amp; Leo</div><div class="fs">Mercredi 22 &rarr; Samedi 25 juillet (3 nuits)</div></div></div>
+    <div class="cbd">
+      <div class="frow"><div class="fdate">22 Jul</div><div class="finfo"><div class="froute">Arriv&eacute;e &agrave; La Ciotat</div><div class="fdetail">Par train</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">25 Jul</div><div class="finfo"><div class="froute">D&eacute;part de La Ciotat</div><div class="fdetail">Par train</div></div><div class="ok">&#10003;</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== SICILE ===== -->
+<div class="page" id="page-sicile">
+  <p class="slabel">Hicham &amp; Nadia &middot; 14&ndash;20 juillet</p>
+  <h2>Sicile &amp; Mariage</h2>
+
+  <!-- Wedding -->
+  <div class="card">
+    <div class="chd sicily"><h3>Mariage Giada &amp; Riccardo &mdash; Palerme</h3><p>15 &amp; 16 juillet</p></div>
+    <div class="cbd">
+      <div class="frow"><div class="fdate">15 Jul</div><div class="finfo"><div class="froute">Ap&eacute;ritif de bienvenue</div><div class="fdetail">21h30 &mdash; Ciurma, Palermo Marina Yachting, Molo Trapezoidale</div></div></div>
+      <div class="frow"><div class="fdate">16 Jul</div><div class="finfo"><div class="froute">C&eacute;r&eacute;monie &mdash; 15h30</div><div class="fdetail">Navette 15h00 depuis &Eacute;glise San Francesco di Paola (1 min du Best Western) &rarr; Santa Maria degli Angeli (la Gancia), quartier Kalsa</div></div></div>
+      <div class="frow"><div class="fdate">16 Jul</div><div class="finfo"><div class="froute">R&eacute;ception &mdash; Castello Lanza Branciforte di Trabia</div><div class="fdetail">Navette 17h30 &rarr; Ch&acirc;teau &middot; Retour en ville ~2h00</div></div></div>
+    </div>
+  </div>
+
+  <!-- Hotels -->
+  <div class="card">
+    <div class="chd sicily"><h3>H&eacute;bergements confirm&eacute;s</h3><p>Palerme &middot; Etna &middot; Castelmola</p></div>
+    <div class="cbd">
+      <div class="frow"><div class="fdate">15&ndash;17</div><div class="finfo"><div class="froute">Best Western Ai Cavalieri &mdash; Palerme</div><div class="fdetail">Via Sant&rsquo;Oliva 8 &middot; Check-in 14h00 &middot; Check-out 12h00</div><div class="fref">Conf 689284667</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">17&ndash;19</div><div class="finfo"><div class="froute">Etnella Enoagriturismo Notti Stellate &mdash; Presa, Etna</div><div class="fdetail">Vignoble de Davide &agrave; 500m d&rsquo;altitude &middot; Check-in apr&egrave;s 15h00 (pr&eacute;venir Davide) &middot; Check-out 10h00</div><div class="fdetail">D&eacute;gustation de vins + BBQ tribal sur demande &middot; etnella.com/tipsetna (pw: etnella01@)</div><div class="fdetail">A18 sortie Fiumefreddo &rarr; Randazzo/Linguaglossa &rarr; Nunziata/Presa &rarr; suivre panneaux Etnella</div><div class="fref">Conf 142152</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">19&ndash;20</div><div class="finfo"><div class="froute">Hotel Villa Sonia &mdash; Castelmola</div><div class="fdetail">Via Porta Mola 9 &middot; Tel +39 0942 28082 &middot; Vue panoramique Etna &amp; mer</div><div class="fdetail">Check-in 14h00 &middot; Check-out 10h00 &middot; Navette gratuite vers Taormine (10h, 16h, 21h20)</div><div class="fref">Conf 9088883731722</div></div><div class="ok">&#10003;</div></div>
+    </div>
+  </div>
+
+  <!-- Road trip itinerary -->
+  <div class="card">
+    <div class="chd sicily"><h3>Road trip &mdash; 17 au 20 juillet</h3><p>Cupra Formentor &middot; Etna &middot; Alcantara &middot; Taormine</p></div>
+    <div class="cbd">
+      <div class="frow"><div class="fdate">Ven 17</div><div class="finfo"><div class="froute">Palerme &rarr; Etnella via Cefal&ugrave;</div><div class="fdetail">12h00 : r&eacute;cup&eacute;ration voiture Avis Piazza Boiardo &middot; Stop Cefal&ugrave; (45min de Palerme) &middot; Arriv&eacute;e Etnella ~15h00 &middot; Soir&eacute;e : d&eacute;gustation, BBQ, nuit &eacute;toil&eacute;e &agrave; 500m</div></div></div>
+      <div class="frow"><div class="fdate">Sam 18</div><div class="finfo"><div class="froute">Etna + Alcantara + Randazzo</div><div class="fdetail">Run matinal sur routes de vignoble &middot; Mont Etna (mont&eacute;e en voiture, randonn&eacute;e optionnelle) &middot; Apr&egrave;s-midi : Gorges d&rsquo;Alcantara (20 min) &mdash; canyon de lave, piscines naturelles &middot; Soir : Randazzo (village m&eacute;di&eacute;val en lave noire)</div></div></div>
+      <div class="frow"><div class="fdate">Dim 19</div><div class="finfo"><div class="froute">Savoca + Castelmola + Taormine</div><div class="fdetail">Checkout Etnella 10h00 &middot; Savoca (Bar Vitelli du Parrain) &middot; Castelmola (vin d&rsquo;amande, vues) &middot; Taormine : th&eacute;&acirc;tre grec, Piazza IX Aprile, granita Bam Bar, baignade Isola Bella &middot; Check-in Villa Sonia 14h00</div></div></div>
+      <div class="frow"><div class="fdate">Lun 20</div><div class="finfo"><div class="froute">Retour Palerme &rarr; vol 18h15</div><div class="fdetail">Matin tranquille Taormine/Castelmola &middot; Retour voiture Avis 11h00 &middot; Balade Palerme (march&eacute; Ballard, Quattro Canti) &middot; Ryanair PMO&rarr;MRS 18h15</div></div></div>
+    </div>
+  </div>
+
+  <!-- Driving routes -->
+  <div class="card">
+    <div class="chd sicily"><h3>Itin&eacute;raires routiers</h3><p>Liens Google Maps &mdash; ouvrir avant de partir</p></div>
+    <div class="cbd">
+      <div style="margin-bottom:16px">
+        <div class="sec-hd">Vendredi 17 &mdash; Palerme &rarr; Etna</div>
+        <a class="map-btn sicily full" href="https://www.google.com/maps/dir/Palermo+Piazza+Boiardo/Cefalu+Sicilia/Etnella+Enoagriturismo+Presa+Sicilia" target="_blank">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          Palerme &rarr; Cefal&ugrave; (arr&ecirc;t) &rarr; Etnella &mdash; ~3h
+        </a>
+        <div class="route-note">A20 c&ocirc;ti&egrave;re via Cefal&ugrave; (45min) &rarr; A19 &rarr; A18 sortie Fiumefreddo &rarr; Nunziata/Presa</div>
+      </div>
+      <div style="margin-bottom:16px">
+        <div class="sec-hd">Dimanche 19 &mdash; Etnella &rarr; Castelmola</div>
+        <a class="map-btn sicily full" href="https://www.google.com/maps/dir/Etnella+Enoagriturismo+Presa+Sicilia/Savoca+Sicilia/Hotel+Villa+Sonia+Castelmola+Sicilia" target="_blank">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          Etnella &rarr; Savoca &rarr; Taormine &rarr; Villa Sonia &mdash; ~1h30
+        </a>
+        <div class="route-note">Linguaglossa &rarr; Francavilla &rarr; Savoca &rarr; Taormine &rarr; Castelmola</div>
+      </div>
+      <div>
+        <div class="sec-hd">Lundi 20 &mdash; Castelmola &rarr; Palerme</div>
+        <a class="map-btn sicily full" href="https://www.google.com/maps/dir/Castelmola+Sicilia/Palermo+Piazza+Boiardo" target="_blank">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+          Villa Sonia &rarr; Palerme (retour voiture) &mdash; ~2h30
+        </a>
+        <div class="route-note">A18 &rarr; A20 c&ocirc;ti&egrave;re &rarr; Palerme &middot; Stop Cefal&ugrave; optionnel si temps le permet</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== TUNISIE ===== -->
+<div class="page" id="page-tunisie">
+  <p class="slabel">Hicham, Nadia, Hedi, Meriem &middot; 29 juillet &ndash; 8/12 ao&ucirc;t</p>
+  <h2>Tunisie &mdash; Hammamet</h2>
+
+  <div class="card">
+    <div class="chd tunisia"><h3>Hammamet Nord</h3><p>Golfe de Hammamet &middot; Cap Bon &middot; C&ocirc;te m&eacute;diterran&eacute;enne</p></div>
+    <div class="cbd">
+      <a class="map-btn tunisia" href="https://maps.app.goo.gl/g1jN7ewHZpAEKYjg9" target="_blank">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        Notre villa &agrave; Hammamet
+      </a>
+      <div class="vmeta">
+        <div><span class="ml">Arriv&eacute;e</span><span class="mv">29 juillet</span></div>
+        <div><span class="ml">D&eacute;part H&amp;N</span><span class="mv">8 ao&ucirc;t</span></div>
+        <div><span class="ml">D&eacute;part Hedi+Mimi</span><span class="mv">12 ao&ucirc;t</span></div>
+        <div><span class="ml">A&eacute;roport proche</span><span class="mv">Enfidha NBE ~35km</span></div>
+        <div><span class="ml">Tunis-Carthage</span><span class="mv">TUN ~60km</span></div>
+        <div><span class="ml">M&eacute;t&eacute;o</span><span class="mv">34&deg;C, mer 27&deg;C</span></div>
+      </div>
     </div>
   </div>
 
   <div class="card">
-    <div class="fheader"><div class="avatar" style="background:var(--lavender)">Mi</div><div><div class="fname">Meriem (Mimi)</div><div class="fsub">Munich &rarr; La Ciotat &rarr; Tunis &rarr; Boston</div></div></div>
-    <div class="card-body">
-      <div class="frow"><div class="fdate">23 Jul</div><div class="finfo"><div class="froute">Munich &rarr; Marseille</div><div class="fdetail">Lufthansa &middot; 20h00 &rarr; 21h45 &middot; Economy Comfort</div><div class="fref">7Q3DXT</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
-      <div class="frow"><div class="fdate">Retour</div><div class="finfo"><div class="froute">Tunis &rarr; hub &rarr; Boston</div><div class="fdetail">Voyage partag&eacute; avec Hedi jusqu'au hub</div></div><div class="nok">&rsaquo; &Agrave; r&eacute;server</div></div>
+    <div class="cbd">
+      <div class="attr"><span class="tag tag-run">Running</span><div class="attr-name">Promenade c&ocirc;ti&egrave;re &mdash; running matinal</div><div class="attr-desc">Bord de mer plat le long du golfe. D&eacute;part tr&egrave;s t&ocirc;t obligatoire &mdash; 30&deg;C+ d&egrave;s 9h en ao&ucirc;t. Long run possible vers Nabeul.</div></div>
+      <div class="attr"><span class="tag tag-beach">Plage</span><div class="attr-name">Plages de Hammamet</div><div class="attr-desc">Longues plages de sable fin, eau chaude (~27&deg;C). Hammamet Nord calme et r&eacute;sidentiel.</div></div>
+      <div class="attr"><span class="tag tag-culture">M&eacute;dina</span><div class="attr-name">M&eacute;dina de Hammamet</div><div class="attr-desc">Petite m&eacute;dina blanche et bleue, kasbah, march&eacute; artisanal. Id&eacute;ale en d&eacute;but ou fin de journ&eacute;e.</div></div>
+      <div class="attr"><span class="tag tag-culture">Excursion</span><div class="attr-name">Nabeul &mdash; march&eacute; de poterie</div><div class="attr-desc">15 km. Capitale de la c&eacute;ramique tunisienne. March&eacute; du vendredi pour la c&eacute;ramique, les &eacute;pices et le jasmin.</div></div>
+      <div class="attr"><span class="tag tag-culture">Journ&eacute;e</span><div class="attr-name">Tunis &amp; Carthage &amp; Sidi Bou Sa&iuml;d</div><div class="attr-desc">60 km. M&eacute;dina de Tunis (UNESCO), ruines de Carthage, Sidi Bou Sa&iuml;d (village blanc et bleu). Journ&eacute;e compl&egrave;te.</div></div>
     </div>
   </div>
 
   <div class="card">
-    <div class="fheader"><div class="avatar" style="background:#4A7B9D">He</div><div><div class="fname">Hedi</div><div class="fsub">? &rarr; Marseille &rarr; Tunis &rarr; New York</div></div></div>
-    <div class="card-body">
-      <div class="frow"><div class="fdate">Aller</div><div class="finfo"><div class="froute">Arriv&eacute;e &agrave; Marseille</div><div class="fdetail">Avant le 29 juillet 11h30</div></div><div class="nok">&rsaquo; &Agrave; confirmer</div></div>
-      <div class="frow"><div class="fdate">Retour</div><div class="finfo"><div class="froute">Tunis &rarr; hub &rarr; New York</div><div class="fdetail">Voyage partag&eacute; avec Mimi jusqu'au hub</div></div><div class="nok">&rsaquo; &Agrave; r&eacute;server</div></div>
+    <div class="cbd">
+      <div class="frow"><div class="fdate">29 Jul</div><div class="finfo"><div class="froute">MRS 11h30 &rarr; TUN 12h10</div><div class="fdetail">Transavia TO6390 &middot; Hicham, Nadia, Hedi, Mimi</div><div class="fref">X72WHR</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">8 Ao&ucirc;t</div><div class="finfo"><div class="froute">TUN &rarr; CDG &rarr; Boston</div><div class="fdetail">AF1185 + AF3616 (Delta) &middot; Hicham &amp; Nadia</div><div class="fref">X75Q5V</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">12 Ao&ucirc;t</div><div class="finfo"><div class="froute">TUN &rarr; CDG &rarr; BOS / NYC</div><div class="fdetail">AF1285 &middot; Mimi (CDG&rarr;BOS 17h40) &amp; Hedi (CDG&rarr;NYC 18h30)</div></div><div class="ok">&#10003;</div></div>
     </div>
   </div>
+</div>
 
-  <div class="card">
-    <div class="fheader"><div class="avatar" style="background:#C4956A">Ma</div><div><div class="fname">Mamia</div><div class="fsub">Casablanca &harr; Marseille</div></div></div>
-    <div class="card-body">
-      <div class="frow"><div class="fdate">20 Jul</div><div class="finfo"><div class="froute">Casablanca &rarr; Marseille</div><div class="fdetail">Royal Air Maroc AT728 &middot; 08h15 &rarr; 11h45</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
-      <div class="frow"><div class="fdate">29 Jul</div><div class="finfo"><div class="froute">Marseille &rarr; Casablanca</div><div class="fdetail">Vol direct Royal Air Maroc</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="fheader"><div class="avatar" style="background:#2D6A4F">MM</div><div><div class="fname">Moulay &amp; Malika (10 pax)</div><div class="fsub">Moulay, Jihane, Shemsi, Mehdi &middot; Malika, PA, Adam, Aida, Isma&euml;l, Gabriel</div></div></div>
-    <div class="card-body">
-      <div class="frow"><div class="fdate">20 Jul</div><div class="finfo"><div class="froute">Casablanca &rarr; Marseille</div><div class="fdetail">Royal Air Maroc AT728 &middot; Embraer 190 &middot; 08h15 &rarr; 11h45</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
-      <div class="frow"><div class="fdate">27 Jul</div><div class="finfo"><div class="froute">Marseille &rarr; Casablanca</div><div class="fdetail">Royal Air Maroc AT733 &middot; Boeing 737 Max 8 &middot; 19h45 &rarr; 21h20</div></div><div class="ok">&#10003; Confirm&eacute;</div></div>
-    </div>
-  </div>
-
-  <div class="card">
-    <div class="fheader"><div class="avatar" style="background:var(--coral)">GL</div><div><div class="fname">Ghita &amp; Leo</div><div class="fsub">Mer 22 &rarr; Sam 25 juillet (3 nuits)</div></div></div>
-    <div class="card-body">
-      <div class="frow"><div class="fdate">22 Jul</div><div class="finfo"><div class="froute">Arriv&eacute;e &agrave; La Ciotat</div></div><div class="nok">Vols TBD</div></div>
-      <div class="frow"><div class="fdate">25 Jul</div><div class="finfo"><div class="froute">D&eacute;part de La Ciotat</div></div><div class="nok">Vols TBD</div></div>
-    </div>
-  </div>
-</section>
-
-<section id="todo">
+<!-- ===== TODO ===== -->
+<div class="page" id="page-todo">
   <p class="slabel">Logistique</p>
   <h2>&Agrave; faire</h2>
   <div class="card">
-    <div class="card-body">
+    <div class="cbd">
       <ul class="todos">
         <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">Villa Ad&eacute;la&iuml;de r&eacute;serv&eacute;e</div></li>
         <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">Voiture Sicile &mdash; Avis Cupra Formentor, Palerme A/R</div></li>
-        <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">Vol Mimi Munich &rarr; Marseille &mdash; Lufthansa 23 juil, r&eacute;f. 7Q3DXT</div></li>
-        <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">Vol retour Mamia MRS &rarr; CMN &mdash; 29 juillet</div></li>
+        <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">Etnella r&eacute;serv&eacute;e (conf 142152) &mdash; 17&ndash;19 juil</div></li>
+        <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">Hotel Villa Sonia r&eacute;serv&eacute; (conf 9088883731722) &mdash; 19&ndash;20 juil</div></li>
+        <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">Vol Mimi MUC&rarr;MRS &mdash; Lufthansa 23 juil, r&eacute;f. 7Q3DXT</div></li>
+        <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">Vol retour Mamia MRS&rarr;CMN &mdash; RAM AT733, 29 juillet</div></li>
+        <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">Vols Hedi confirm&eacute;s (EWR&rarr;ORY&rarr;NCE + TUN&rarr;CDG&rarr;NYC)</div></li>
+        <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">Vol retour Mimi TUN&rarr;CDG&rarr;BOS &mdash; 12 ao&ucirc;t (AF1285)</div></li>
+        <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">V&eacute;lo Giant City La Ciotat &mdash; confirm&eacute; verbalement, 21&ndash;25 juil</div></li>
+        <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">Ghita &amp; Leo confirm&eacute;s &mdash; 22&ndash;25 juillet par train</div></li>
         <li class="titem"><div class="chk open"></div><div class="ttext"><strong>H&eacute;bergement 27&ndash;29 juillet</strong> &mdash; 2 nuits pr&egrave;s de Marseille, 5 pax</div></li>
         <li class="titem"><div class="chk open"></div><div class="ttext"><strong>Transport a&eacute;roport &rarr; villa</strong> &mdash; 20 juil, 2 vagues&nbsp;: 11h45 et 20h00</div></li>
-        <li class="titem"><div class="chk open"></div><div class="ttext"><strong>Voiture Marseille</strong> &mdash; 1 v&eacute;hicule du 20 au 29 juillet</div></li>
-        <li class="titem"><div class="chk open"></div><div class="ttext"><strong>Vols retour Mimi &amp; Hedi</strong> &mdash; Tunis &rarr; hub &rarr; BOS / NYC</div></li>
-        <li class="titem"><div class="chk open"></div><div class="ttext"><strong>Vol aller Hedi</strong> &mdash; &agrave; confirmer</div></li>
-        <li class="titem"><div class="chk open"></div><div class="ttext"><strong>Vols Ghita &amp; Leo</strong> &mdash; &agrave; collecter</div></li>
+        <li class="titem"><div class="chk open"></div><div class="ttext"><strong>Voiture Marseille</strong> &mdash; 1 v&eacute;hicule 20&ndash;29 juillet</div></li>
+        <li class="titem"><div class="chk open"></div><div class="ttext"><strong>Num&eacute;ro de confirmation Mamia</strong> &mdash; &agrave; ajouter</div></li>
       </ul>
     </div>
   </div>
-</section>
+</div>
+
+<!-- ===== BUDGET ===== -->
+<div class="page" id="page-budget">
+  <p class="slabel">Usage interne</p>
+  <h2>Budget &amp; R&eacute;f&eacute;rences</h2>
+  <div class="bnote">&#128274; Page &agrave; usage interne uniquement &mdash; co&ucirc;ts confirm&eacute;s et r&eacute;f&eacute;rences de r&eacute;servation.</div>
+  <div class="card">
+    <div class="cbd">
+      <div class="brow"><div class="bitem">Vols BOS &harr; Sicile + Tunis &harr; BOS<small>Air France &mdash; ref X75Q5V</small></div><div class="bamt">TBD</div></div>
+      <div class="brow"><div class="bitem">H&ocirc;tel Best Western Palerme<small>2 nuits &mdash; conf 689284667</small></div><div class="bamt">TBD</div></div>
+      <div class="brow"><div class="bitem">Voiture Sicile &mdash; Avis Cupra Formentor<small>3 jours, Palerme A/R &mdash; conf 18985959US6</small></div><div class="bamt">$211.92</div></div>
+      <div class="brow"><div class="bitem">Etnella Enoagriturismo<small>2 nuits &mdash; conf 142152</small></div><div class="bamt">&euro;355.00</div></div>
+      <div class="brow"><div class="bitem">Hotel Villa Sonia, Castelmola<small>1 nuit &mdash; conf 9088883731722</small></div><div class="bamt">$229.61</div></div>
+      <div class="brow"><div class="bitem">Vol Palerme &rarr; Marseille<small>Ryanair FR6786 &mdash; ref G6347K</small></div><div class="bamt">$190.82</div></div>
+      <div class="brow"><div class="bitem">Vol Marseille &rarr; Tunis (&times;4)<small>Transavia TO6390 &mdash; ref X72WHR</small></div><div class="bamt">&euro;1,089.00</div></div>
+      <div class="brow"><div class="bitem">Vol Mimi Munich &rarr; Marseille<small>Lufthansa &mdash; ref 7Q3DXT</small></div><div class="bamt">&euro;185.97</div></div>
+      <div class="brow"><div class="bitem">V&eacute;lo Giant City La Ciotat<small>5 jours, 21&ndash;25 juillet</small></div><div class="bamt">&euro;345.00</div></div>
+    </div>
+  </div>
+</div>
 
 <footer>
-  Vacances Skali &middot; Juillet 2026 &middot; La Ciotat, Provence<br>
-  <span style="opacity:.4">Mis &agrave; jour le 20 juin 2026</span>
+  Vacances Skali &middot; Juillet 2026 &middot; La Ciotat &middot; Sicile &middot; Hammamet<br>
+  <span style="opacity:.35">Mis &agrave; jour le 11 juillet 2026</span>
 </footer>
 
+<script>
+function show(tab) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('nav a').forEach(a => a.classList.remove('active'));
+  document.getElementById('page-' + tab).classList.add('active');
+  document.getElementById('nav-' + tab).classList.add('active');
+  window.scrollTo(0,0);
+}
+</script>
 </body>
 </html>
