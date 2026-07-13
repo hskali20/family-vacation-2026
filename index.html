@@ -134,8 +134,40 @@ nav a:hover,nav a.active{background:rgba(255,255,255,.12);color:var(--white);}
 .btotal{display:flex;justify-content:space-between;padding:13px 0;border-top:2px solid var(--border);margin-top:4px;}
 .btotal span{font-size:15px;font-weight:700;color:var(--navy);}
 
+/* DASHBOARD */
+.dash-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:14px;}
+.dash-tile{background:var(--white);border-radius:12px;padding:16px;flex:1;min-width:140px;box-shadow:0 2px 12px rgba(27,42,74,.07);}
+.dash-label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:6px;}
+.dash-value{font-size:20px;font-weight:700;color:var(--navy);font-family:'Playfair Display',serif;}
+.dash-sub{font-size:12px;color:var(--muted);margin-top:3px;}
+.dash-hero{background:var(--navy);color:var(--white);border-radius:14px;padding:20px 22px;margin-bottom:16px;}
+.dash-hero .dash-label{color:rgba(255,255,255,.6);}
+.dash-hero .dash-value{color:var(--white);font-size:24px;}
+.dash-hero .dash-sub{color:rgba(255,255,255,.7);}
+.quicklinks{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px;}
+
+/* ROOM TABLE */
+.room-row{display:flex;align-items:center;padding:10px 0;border-bottom:1px solid var(--border);gap:12px;}
+.room-row:last-child{border-bottom:none;}
+.room-num{font-size:13px;font-weight:700;color:var(--white);background:var(--navy);border-radius:8px;min-width:28px;height:28px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.room-num.pending{background:var(--coral);}
+.room-occ{font-size:13px;color:var(--text);}
+.room-note{font-size:11px;color:var(--muted);margin-top:1px;}
+
+/* BACK TO TOP */
+#backTop{position:fixed;bottom:70px;right:16px;background:var(--navy);color:var(--white);width:40px;height:40px;border-radius:50%;display:none;align-items:center;justify-content:center;box-shadow:0 2px 10px rgba(0,0,0,.2);cursor:pointer;z-index:50;font-size:18px;border:none;}
+#backTop.show{display:flex;}
+
 footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);border-top:1px solid var(--border);}
-@media(max-width:500px){.tnote{display:none;}.vmeta{grid-template-columns:1fr 1fr;}.wgrid{grid-template-columns:1fr 1fr;}}
+@media(max-width:500px){
+  .tnote{display:none;}
+  .vmeta{grid-template-columns:1fr 1fr;}
+  .wgrid{grid-template-columns:1fr 1fr;}
+  body{padding-bottom:56px;}
+  nav{position:fixed;bottom:0;left:0;right:0;top:auto;z-index:40;overflow-x:auto;flex-wrap:nowrap;justify-content:flex-start;padding:8px 10px;border-top:1px solid rgba(255,255,255,.08);-webkit-overflow-scrolling:touch;}
+  nav a{padding:10px 14px;flex-shrink:0;}
+  .map-btn, .lnk{padding:10px 14px;}
+}
 </style>
 </head>
 <body>
@@ -147,18 +179,61 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
 </div>
 
 <nav>
-  <a onclick="show('villa')" id="nav-villa" class="active">La Villa</a>
+  <a onclick="show('dash')" id="nav-dash" class="active">Aujourd&rsquo;hui</a>
+  <a onclick="show('villa')" id="nav-villa">La Villa</a>
   <a onclick="show('programme')" id="nav-programme">Programme</a>
   <a onclick="show('velo')" id="nav-velo">V&eacute;lo</a>
   <a onclick="show('vols')" id="nav-vols">Vols</a>
   <a onclick="show('sicile')" id="nav-sicile">Sicile</a>
   <a onclick="show('tunisie')" id="nav-tunisie">Tunisie</a>
+  <a onclick="show('cartes')" id="nav-cartes">Cartes</a>
   <a onclick="show('todo')" id="nav-todo">&Agrave; faire</a>
   <a onclick="show('budget')" id="nav-budget">Budget</a>
 </nav>
 
+<!-- ===== DASHBOARD ===== -->
+<div class="page active" id="page-dash">
+  <p class="slabel">Vue du jour</p>
+  <h2 id="dashDate">Aujourd&rsquo;hui</h2>
+
+  <div class="dash-hero">
+    <div class="dash-label">En ce moment</div>
+    <div class="dash-value" id="dashLeg">Chargement&hellip;</div>
+    <div class="dash-sub" id="dashLegSub"></div>
+  </div>
+
+  <div class="dash-row">
+    <div class="dash-tile">
+      <div class="dash-label">&Agrave; la villa aujourd&rsquo;hui</div>
+      <div class="dash-value" id="dashHeadcount">&mdash;</div>
+      <div class="dash-sub" id="dashHeadcountSub"></div>
+    </div>
+    <div class="dash-tile">
+      <div class="dash-label">Prochain &eacute;v&eacute;nement</div>
+      <div class="dash-value" id="dashNext" style="font-size:15px;">&mdash;</div>
+      <div class="dash-sub" id="dashNextSub"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="cbd">
+      <div class="wloc-title" id="dashWeatherLoc">M&eacute;t&eacute;o</div>
+      <div class="wdays" id="w-dash"><div class="wcard wloading">Chargement&hellip;</div></div>
+    </div>
+  </div>
+
+  <div class="sdiv"></div>
+  <p class="slabel">Liens rapides</p>
+  <div class="quicklinks">
+    <a class="lnk" href="https://www.airbnb.com/rooms/46958162" target="_blank">&#127968; Villa Airbnb</a>
+    <a class="lnk" href="https://photos.app.goo.gl/nnBY9UugaRMhWzVt7" target="_blank">&#128248; Photos partag&eacute;es</a>
+    <a class="lnk" href="#" onclick="show('cartes');return false;">&#128506; Toutes les cartes</a>
+    <a class="lnk" href="#" onclick="show('todo');return false;">&#9989; &Agrave; faire</a>
+  </div>
+</div>
+
 <!-- ===== VILLA ===== -->
-<div class="page active" id="page-villa">
+<div class="page" id="page-villa">
   <p class="slabel">Le logement</p>
   <h2>Villa Ad&eacute;la&iuml;de &mdash; La Ciotat</h2>
 
@@ -230,6 +305,32 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
       <div class="attr"><span class="tag tag-nature">Excursion</span><div class="attr-name">Cassis &amp; ses calanques</div><div class="attr-desc">20 km. Bateau ou kayak pour explorer Port-Miou, Port-Pin et En-Vau. Parmi les plus belles c&ocirc;tes de France.</div><div class="linkrow"><a class="lnk" href="https://www.google.com/maps/search/Calanque+En-Vau+Cassis" target="_blank">&#128205; Maps</a></div></div>
       <div class="attr"><span class="tag tag-culture">Excursion</span><div class="attr-name">Aix-en-Provence</div><div class="attr-desc">40 km. March&eacute; proven&ccedil;al, cours Mirabeau, atelier C&eacute;zanne. Demi-journ&eacute;e suffisante.</div><div class="linkrow"><a class="lnk" href="https://www.aixenprovencetourism.com/en/" target="_blank">&#127968; Office de tourisme</a></div></div>
       <div class="attr"><span class="tag tag-run">Running</span><div class="attr-name">Parcours running</div><div class="attr-desc">Bord de mer port&rarr;plages : 5&ndash;8 km A/R, plat, vue mer. Long run : piste calanques Figuerolles (~12&ndash;15 km A/R). T&ocirc;t le matin recommand&eacute;.</div></div>
+    </div>
+  </div>
+
+  <div class="sdiv"></div>
+  <p class="slabel">Chambres</p>
+  <div class="card">
+    <div class="cbd">
+      <div class="room-row"><div class="room-num">1</div><div><div class="room-occ">Nadia &amp; Hicham</div></div></div>
+      <div class="room-row"><div class="room-num">2</div><div><div class="room-occ">Adam &amp; Hedi</div></div></div>
+      <div class="room-row"><div class="room-num">3</div><div><div class="room-occ">Aida &amp; Shemsi</div></div></div>
+      <div class="room-row"><div class="room-num">4</div><div><div class="room-occ">Jihane &amp; Moulay</div></div></div>
+      <div class="room-row"><div class="room-num">5</div><div><div class="room-occ">Mamia</div><div class="room-note">Rez-de-chauss&eacute;e, accessible</div></div></div>
+      <div class="room-row"><div class="room-num">6</div><div><div class="room-occ">Malika &amp; PA</div></div></div>
+      <div class="room-row"><div class="room-num">7</div><div><div class="room-occ">Isma&euml;l, Mehdi, Gabriel</div></div></div>
+      <div class="room-row"><div class="room-num">&mdash;</div><div><div class="room-occ">Meriem (Mimi)</div><div class="room-note">Salon, probablement</div></div></div>
+      <div class="room-row"><div class="room-num pending">?</div><div><div class="room-occ">Ghita &amp; Leo (22&ndash;25 juil)</div><div class="room-note">&Agrave; confirmer avec Laurence (h&ocirc;te) &mdash; sinon h&ocirc;tel &agrave; proximit&eacute;</div></div></div>
+    </div>
+  </div>
+
+  <div class="sdiv"></div>
+  <p class="slabel">Restaurants &agrave; La Ciotat</p>
+  <div class="card">
+    <div class="cbd">
+      <div class="attr"><div class="attr-name">Le Sloop</div><div class="attr-desc">3 Quai Fran&ccedil;ois Mitterrand, vieux port &middot; ~300&ndash;400 m, ~5 min &agrave; pied de la villa</div><div class="linkrow"><a class="lnk" href="https://www.google.com/maps/search/Le+Sloop+La+Ciotat" target="_blank">&#128205; Maps</a></div></div>
+      <div class="attr"><div class="attr-name">La T&ecirc;te d&rsquo;Ail</div><div class="attr-desc">13 Bd Anatole France, vieux port &middot; ~400&ndash;500 m, ~6 min &agrave; pied</div><div class="linkrow"><a class="lnk" href="https://www.google.com/maps/search/La+Tete+d+Ail+La+Ciotat" target="_blank">&#128205; Maps</a></div></div>
+      <div class="attr"><div class="attr-name">La Spiaggia</div><div class="attr-desc">423 Bd Beaurivage, bord de mer vers le Mugel &middot; ~2&ndash;3 km, ~5&ndash;8 min en voiture/v&eacute;lo</div><div class="linkrow"><a class="lnk" href="https://www.google.com/maps/search/La+Spiaggia+La+Ciotat" target="_blank">&#128205; Maps</a></div></div>
     </div>
   </div>
 </div>
@@ -313,13 +414,14 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
       <div class="frow"><div class="fdate">20 Jul</div><div class="finfo"><div class="froute">Palerme &rarr; Marseille</div><div class="fdetail">Ryanair FR6786 &middot; 18h15 &rarr; 20h00</div><div class="fref">G6347K</div></div><div class="ok">&#10003;</div></div>
       <div class="frow"><div class="fdate">29 Jul</div><div class="finfo"><div class="froute">Marseille &rarr; Tunis &times;4</div><div class="fdetail">Transavia TO6390 &middot; 11h30 &rarr; 12h10 &middot; Hicham, Nadia, Hedi, Mimi</div><div class="fref">X72WHR</div></div><div class="ok">&#10003;</div></div>
       <div class="frow"><div class="fdate">8&ndash;9 Ao&ucirc;t</div><div class="finfo"><div class="froute">Tunis &rarr; Paris &rarr; Boston</div><div class="fdetail">AF1185 (18h45&rarr;22h20) + AF3616 Delta (11h45&rarr;13h39)</div><div class="fref">X75Q5V</div></div><div class="ok">&#10003;</div></div>
-      <div class="frow"><div class="fdate">8&ndash;9 Ao&ucirc;t</div><div class="finfo"><div class="froute">Escale &mdash; Sheraton Paris CDG (Terminal 2C)</div><div class="fdetail">Check-in 8 ao&ucirc;t 14h00 &middot; Check-out 9 ao&ucirc;t 12h00 &middot; Chambre Deluxe, 1 lit double &middot; 272,26 &euro; (tarif AAA)</div><div class="fdetail">Annulation gratuite jusqu&rsquo;au 7 ao&ucirc;t 23h59 (heure locale), sinon frais de 272,26 &euro;</div><div class="fref">Conf 96528292</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">8&ndash;9 Ao&ucirc;t</div><div class="finfo"><div class="froute">Escale &mdash; Sheraton Paris CDG (Terminal 2C)</div><div class="fdetail">Tremblay-en-France 95716 &middot; Check-in 8 ao&ucirc;t 14h00 &middot; Check-out 9 ao&ucirc;t 12h00</div><div class="fref">Conf 96528292</div></div><div class="ok">&#10003;</div></div>
       <div class="linkrow">
         <a class="lnk" href="https://www.delta.com/mytrips/" target="_blank">&#9992; Delta &mdash; Mes voyages</a>
         <a class="lnk" href="https://www.airfrance.us/" target="_blank">&#9992; Air France</a>
         <a class="lnk" href="https://www.ita-airways.com/en_en/fly-ita/manage-your-booking.html" target="_blank">&#9992; ITA Airways</a>
         <a class="lnk" href="https://www.ryanair.com/gb/en/lp/myryanair" target="_blank">&#9992; Ryanair</a>
         <a class="lnk" href="https://www.marriott.com/en-us/hotels/parsi-sheraton-paris-charles-de-gaulle-airport-hotel/overview/" target="_blank">&#127968; Sheraton CDG</a>
+        <a class="lnk" href="tel:+33149197070">&#128222; +33-1-49197070</a>
       </div>
     </div>
   </div>
@@ -415,7 +517,7 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
     <div class="cbd">
       <div class="frow"><div class="fdate">15&ndash;17</div><div class="finfo"><div class="froute">Best Western Ai Cavalieri &mdash; Palerme</div><div class="fdetail">Via Sant&rsquo;Oliva 8 &middot; Check-in 14h00 &middot; Check-out 12h00</div><div class="fref">Conf 689284667</div></div><div class="ok">&#10003;</div></div>
       <div class="frow"><div class="fdate">17&ndash;19</div><div class="finfo"><div class="froute">Etnella Enoagriturismo Notti Stellate &mdash; Presa, Etna</div><div class="fdetail">Vignoble de Davide &agrave; 500m d&rsquo;altitude &middot; Check-in apr&egrave;s 15h00 (pr&eacute;venir Davide) &middot; Check-out 10h00</div><div class="fdetail">D&eacute;gustation de vins + BBQ tribal sur demande &middot; etnella.com/tipsetna (pw: etnella01@)</div><div class="fdetail">A18 sortie Fiumefreddo &rarr; Randazzo/Linguaglossa &rarr; Nunziata/Presa &rarr; suivre panneaux Etnella</div><div class="fref">Conf 142152</div></div><div class="ok">&#10003;</div></div>
-      <div class="frow"><div class="fdate">19&ndash;20</div><div class="finfo"><div class="froute">Hotel Villa Sonia &mdash; Castelmola</div><div class="fdetail">Via Porta Mola 9 &middot; Tel +39 0942 28082 &middot; Vue panoramique Etna &amp; mer</div><div class="fdetail">Check-in 14h00 &middot; Check-out 10h00 &middot; Navette gratuite vers Taormine (10h, 16h, 21h20)</div><div class="fref">Conf 9088883731722</div></div><div class="ok">&#10003;</div></div>
+      <div class="frow"><div class="fdate">19&ndash;20</div><div class="finfo"><div class="froute">Hotel Villa Sonia &mdash; Castelmola</div><div class="fdetail">Via Porta Mola 9 &middot; Tel <a href="tel:+390942028082" style="color:inherit">+39 0942 28082</a> &middot; Vue panoramique Etna &amp; mer</div><div class="fdetail">Check-in 14h00 &middot; Check-out 10h00 &middot; Navette gratuite vers Taormine (10h, 16h, 21h20)</div><div class="fref">Conf 9088883731722</div></div><div class="ok">&#10003;</div></div>
       <div class="linkrow">
         <a class="lnk" href="https://www.aicavalierihotel.it/en/home-page.aspx" target="_blank">&#127968; Ai Cavalieri &mdash; site officiel</a>
         <a class="lnk" href="https://www.etnella.com/tipsetna" target="_blank">&#127793; Etnella &mdash; site officiel</a>
@@ -516,6 +618,60 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
   </div>
 </div>
 
+<!-- ===== CARTES ===== -->
+<div class="page" id="page-cartes">
+  <p class="slabel">Tous les liens utiles</p>
+  <h2>Cartes</h2>
+
+  <div class="card">
+    <div class="chd navy"><h3>La Ciotat</h3></div>
+    <div class="cbd">
+      <div class="linkrow">
+        <a class="lnk" href="https://maps.google.com/?q=65+Avenue+Henri+Fruchier,+13600+La+Ciotat" target="_blank">&#127968; Villa Ad&eacute;la&iuml;de</a>
+        <a class="lnk" href="https://maps.google.com/?q=232+Avenue+Ernest+Subilia+La+Ciotat" target="_blank">&#128692; Giant City (v&eacute;lo)</a>
+        <a class="lnk" href="https://www.google.com/maps/search/Le+Sloop+La+Ciotat" target="_blank">&#127860; Le Sloop</a>
+        <a class="lnk" href="https://www.google.com/maps/search/La+Tete+d+Ail+La+Ciotat" target="_blank">&#127860; La T&ecirc;te d&rsquo;Ail</a>
+        <a class="lnk" href="https://www.google.com/maps/search/La+Spiaggia+La+Ciotat" target="_blank">&#127860; La Spiaggia</a>
+        <a class="lnk" href="https://www.google.com/maps/search/pharmacie+La+Ciotat" target="_blank">&#128138; Pharmacie</a>
+        <a class="lnk" href="https://www.google.com/maps/search/supermarch%C3%A9+La+Ciotat" target="_blank">&#128722; Supermarch&eacute;</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="chd sicily"><h3>Sicile</h3></div>
+    <div class="cbd">
+      <div class="linkrow">
+        <a class="lnk" href="https://www.google.com/maps/search/Best+Western+Ai+Cavalieri+Palermo" target="_blank">&#127968; Best Western Ai Cavalieri</a>
+        <a class="lnk" href="https://www.google.com/maps/search/Etnella+Enoagriturismo+Presa" target="_blank">&#127968; Etnella</a>
+        <a class="lnk" href="https://www.google.com/maps/search/Hotel+Villa+Sonia+Castelmola" target="_blank">&#127968; Villa Sonia</a>
+        <a class="lnk" href="https://www.google.com/maps/search/Aeroporto+di+Palermo" target="_blank">&#9992; A&eacute;roport PMO</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="chd tunisia"><h3>Tunisie</h3></div>
+    <div class="cbd">
+      <div class="linkrow">
+        <a class="lnk" href="https://maps.app.goo.gl/g1jN7ewHZpAEKYjg9" target="_blank">&#127968; Villa Hammamet Nord</a>
+        <a class="lnk" href="https://www.google.com/maps/search/Aeroport+Enfidha+Hammamet+NBE" target="_blank">&#9992; A&eacute;roport NBE</a>
+        <a class="lnk" href="https://www.google.com/maps/search/Aeroport+Tunis+Carthage" target="_blank">&#9992; A&eacute;roport TUN</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="chd navy"><h3>Marseille &amp; CDG</h3></div>
+    <div class="cbd">
+      <div class="linkrow">
+        <a class="lnk" href="https://www.google.com/maps/search/Aeroport+Marseille+Provence+MRS" target="_blank">&#9992; A&eacute;roport MRS</a>
+        <a class="lnk" href="https://maps.google.com/?q=Sheraton+Paris+Charles+de+Gaulle+Airport+Hotel" target="_blank">&#127968; Sheraton CDG (Terminal 2C)</a>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- ===== TODO ===== -->
 <div class="page" id="page-todo">
   <p class="slabel">Logistique</p>
@@ -535,9 +691,9 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
         <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">Ghita &amp; Leo confirm&eacute;s &mdash; 22&ndash;25 juillet par train</div></li>
         <li class="titem"><div class="chk open"></div><div class="ttext"><strong>H&eacute;bergement 27&ndash;29 juillet</strong> &mdash; 2 nuits pr&egrave;s de Marseille, 5 pax</div></li>
         <li class="titem"><div class="chk open"></div><div class="ttext"><strong>Transport a&eacute;roport &rarr; villa</strong> &mdash; 20 juil, 2 vagues&nbsp;: 11h45 et 20h00</div></li>
-        <li class="titem"><div class="chk open"></div><div class="ttext"><strong>Voiture Marseille</strong> &mdash; 1 v&eacute;hicule 20&ndash;29 juillet</div></li>
         <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">H&ocirc;tel escale CDG &mdash; Sheraton Terminal 2C r&eacute;serv&eacute; (conf 96528292), 8&ndash;9 ao&ucirc;t</div></li>
-        <li class="titem"><div class="chk open"></div><div class="ttext"><strong>Num&eacute;ro de confirmation Mamia</strong> &mdash; &agrave; ajouter</div></li>
+        <li class="titem"><div class="chk open"></div><div class="ttext"><strong>Ghita &amp; Leo &mdash; logement villa</strong> (22&ndash;25 juil) &mdash; confirmer avec Laurence si invit&eacute;s suppl&eacute;mentaires OK, sinon h&ocirc;tel &agrave; proximit&eacute;</div></li>
+        <li class="titem"><div class="chk done">&#10003;</div><div class="ttext done">Site v3 &mdash; tableau de bord, chambres, m&eacute;t&eacute;o vent/UV, restaurants, cartes, galerie photos, version mobile</div></li>
       </ul>
     </div>
   </div>
@@ -571,6 +727,8 @@ footer{text-align:center;padding:28px 20px;font-size:11px;color:var(--muted);bor
   <span style="opacity:.35">Mis &agrave; jour le 12 juillet 2026</span>
 </footer>
 
+<button id="backTop" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Retour en haut">&#8593;</button>
+
 <script>
 function show(tab) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -582,9 +740,9 @@ function show(tab) {
 
 // ===== METEO — prévisions 3 jours en direct (Open-Meteo, sans clé API) =====
 const WEATHER_LOCS = [
-  { id: 'w-laciotat', lat: 43.1748, lon: 5.6044, tz: 'Europe/Paris' },
-  { id: 'w-sicile',   lat: 38.1157, lon: 13.3615, tz: 'Europe/Rome' },
-  { id: 'w-hammamet', lat: 36.4201, lon: 10.5765, tz: 'Africa/Tunis' }
+  { id: 'w-laciotat', label: 'La Ciotat', lat: 43.1748, lon: 5.6044, tz: 'Europe/Paris' },
+  { id: 'w-sicile',   label: 'Sicile (Palerme)', lat: 38.1157, lon: 13.3615, tz: 'Europe/Rome' },
+  { id: 'w-hammamet', label: 'Hammamet', lat: 36.4201, lon: 10.5765, tz: 'Africa/Tunis' }
 ];
 
 function wmoIcon(code) {
@@ -604,8 +762,9 @@ function fmtDay(dateStr) {
 
 async function loadWeather(loc) {
   const el = document.getElementById(loc.id);
+  if (!el) return;
   try {
-    const url = `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&daily=weathercode,temperature_2m_max,temperature_2m_min&timezone=${encodeURIComponent(loc.tz)}&forecast_days=3`;
+    const url = `https://api.open-meteo.com/v1/forecast?latitude=${loc.lat}&longitude=${loc.lon}&daily=weathercode,temperature_2m_max,temperature_2m_min,windspeed_10m_max,uv_index_max&timezone=${encodeURIComponent(loc.tz)}&forecast_days=3`;
     const res = await fetch(url);
     if (!res.ok) throw new Error('reseau');
     const data = await res.json();
@@ -615,6 +774,7 @@ async function loadWeather(loc) {
         <div class="wd-date">${fmtDay(day)}</div>
         <div class="wicon">${wmoIcon(data.daily.weathercode[i])}</div>
         <div class="wtemp">${Math.round(data.daily.temperature_2m_max[i])}&deg; <small>/ ${Math.round(data.daily.temperature_2m_min[i])}&deg;</small></div>
+        <div class="wnote" style="margin-top:5px">&#128168; ${Math.round(data.daily.windspeed_10m_max[i])} km/h<br>&#9728;&#65039; UV ${Math.round(data.daily.uv_index_max[i])}</div>
       </div>`).join('');
   } catch (e) {
     el.innerHTML = '<div class="wcard wloading">M&eacute;t&eacute;o indisponible &mdash; v&eacute;rifiez la connexion</div>';
@@ -622,6 +782,107 @@ async function loadWeather(loc) {
 }
 
 WEATHER_LOCS.forEach(loadWeather);
+
+// ===== DASHBOARD =====
+const LEGS = [
+  { start: '2026-07-14', end: '2026-07-20', label: 'Sicile', sub: 'Hicham & Nadia \u2014 mariage & road trip', wloc: 'w-sicile', wlabel: 'Sicile (Palerme)' },
+  { start: '2026-07-20', end: '2026-07-27', label: 'La Ciotat \u2014 Villa Ad\u00e9la\u00efde', sub: 'Provence, 17 personnes', wloc: 'w-laciotat', wlabel: 'La Ciotat' },
+  { start: '2026-07-27', end: '2026-07-29', label: 'Escale Marseille', sub: '5 pax en attendant le vol pour Tunis', wloc: 'w-laciotat', wlabel: 'Marseille (proche La Ciotat)' },
+  { start: '2026-07-29', end: '2026-08-08', label: 'Hammamet Nord, Tunisie', sub: 'Golfe de Hammamet', wloc: 'w-hammamet', wlabel: 'Hammamet' },
+  { start: '2026-08-08', end: '2026-08-09', label: 'Escale CDG (Hicham & Nadia)', sub: 'Sheraton Paris CDG, Terminal 2C', wloc: null, wlabel: null }
+];
+
+const HEADCOUNT = [
+  { date: '2026-07-20', count: 14, note: 'Moulay/Malika/Mamia 11h45, Hicham/Nadia 20h' },
+  { date: '2026-07-21', count: 14, note: '' },
+  { date: '2026-07-22', count: 16, note: 'Ghita & Leo arrivent' },
+  { date: '2026-07-23', count: 17, note: 'Mimi arrive 21h45' },
+  { date: '2026-07-24', count: 17, note: 'Tout le monde' },
+  { date: '2026-07-25', count: 15, note: 'Ghita & Leo repartent' },
+  { date: '2026-07-26', count: 15, note: '' },
+  { date: '2026-07-27', count: 0, note: 'Check-out' }
+];
+
+const EVENTS = [
+  { date: '2026-07-14', label: 'D\u00e9part Hicham & Nadia \u2014 Boston \u2192 Rome \u2192 Palerme' },
+  { date: '2026-07-15', label: 'Mariage Giada & Riccardo \u2014 ap\u00e9ritif' },
+  { date: '2026-07-16', label: 'Mariage Giada & Riccardo \u2014 c\u00e9r\u00e9monie' },
+  { date: '2026-07-17', label: 'D\u00e9part road trip Etna + arriv\u00e9e Hedi \u00e0 Nice (18)' },
+  { date: '2026-07-20', label: 'Arriv\u00e9e groupe \u00e0 la Villa Ad\u00e9la\u00efde' },
+  { date: '2026-07-22', label: 'Arriv\u00e9e Ghita & Leo' },
+  { date: '2026-07-23', label: 'Arriv\u00e9e Mimi (21h45)' },
+  { date: '2026-07-25', label: 'D\u00e9part Ghita & Leo' },
+  { date: '2026-07-27', label: 'Check-out villa \u2014 d\u00e9part Moulay/Malika/Mamia' },
+  { date: '2026-07-29', label: 'Vol groupe Marseille \u2192 Tunis' },
+  { date: '2026-08-08', label: 'D\u00e9part Hicham & Nadia \u2014 Tunis \u2192 CDG' },
+  { date: '2026-08-09', label: 'D\u00e9part Hicham & Nadia \u2014 CDG \u2192 Boston' },
+  { date: '2026-08-12', label: 'D\u00e9part Hedi & Mimi \u2014 Tunis \u2192 CDG \u2192 NYC/BOS' }
+];
+
+function toDateOnly(d) {
+  return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+}
+
+function renderDashboard() {
+  const today = toDateOnly(new Date());
+  document.getElementById('dashDate').textContent =
+    today.toLocaleDateString('fr-FR', { weekday: 'long', day: 'numeric', month: 'long', year: 'numeric' });
+
+  // Current leg
+  const leg = LEGS.find(l => today >= toDateOnly(new Date(l.start + 'T12:00:00')) && today < toDateOnly(new Date(l.end + 'T12:00:00')));
+  const dashLeg = document.getElementById('dashLeg');
+  const dashLegSub = document.getElementById('dashLegSub');
+  if (leg) {
+    dashLeg.textContent = leg.label;
+    dashLegSub.textContent = leg.sub;
+  } else if (today < toDateOnly(new Date('2026-07-14T12:00:00'))) {
+    const days = Math.round((toDateOnly(new Date('2026-07-14T12:00:00')) - today) / 86400000);
+    dashLeg.textContent = 'Avant le d\u00e9part';
+    dashLegSub.textContent = `D${days === 1 ? '\u00e9part demain' : '\u00e9part dans ' + days + ' jours'} (Sicile, 14 juillet)`;
+  } else {
+    dashLeg.textContent = 'Voyage termin\u00e9';
+    dashLegSub.textContent = 'Bon retour \u00e0 la maison !';
+  }
+
+  // Headcount at villa
+  const dateStr = today.toISOString().slice(0, 10);
+  const hc = HEADCOUNT.find(h => h.date === dateStr);
+  const dashHc = document.getElementById('dashHeadcount');
+  const dashHcSub = document.getElementById('dashHeadcountSub');
+  if (hc) {
+    dashHc.textContent = hc.count + ' pax';
+    dashHcSub.textContent = hc.note || '\u00c0 la villa aujourd\u2019hui';
+  } else {
+    dashHc.textContent = '\u2014';
+    dashHcSub.textContent = 'Pas encore \u00e0 la villa (20\u201327 juillet)';
+  }
+
+  // Next event
+  const next = EVENTS.find(e => toDateOnly(new Date(e.date + 'T12:00:00')) >= today);
+  const dashNext = document.getElementById('dashNext');
+  const dashNextSub = document.getElementById('dashNextSub');
+  if (next) {
+    const nd = toDateOnly(new Date(next.date + 'T12:00:00'));
+    const diff = Math.round((nd - today) / 86400000);
+    dashNext.textContent = next.label;
+    dashNextSub.textContent = diff === 0 ? 'Aujourd\u2019hui' : diff === 1 ? 'Demain' : `Dans ${diff} jours`;
+  } else {
+    dashNext.textContent = 'Aucun \u00e9v\u00e9nement \u00e0 venir';
+    dashNextSub.textContent = '';
+  }
+
+  // Weather tile for current leg (fallback: La Ciotat)
+  const wloc = (leg && leg.wloc) ? WEATHER_LOCS.find(w => w.id === leg.wloc) : WEATHER_LOCS.find(w => w.id === 'w-laciotat');
+  document.getElementById('dashWeatherLoc').textContent = 'M\u00e9t\u00e9o \u2014 ' + ((leg && leg.wlabel) || 'La Ciotat');
+  if (wloc) loadWeather({ ...wloc, id: 'w-dash' });
+}
+
+renderDashboard();
+
+// ===== BACK TO TOP =====
+window.addEventListener('scroll', () => {
+  document.getElementById('backTop').classList.toggle('show', window.scrollY > 400);
+});
 </script>
 </body>
 </html>
